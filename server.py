@@ -19,4 +19,6 @@ def index():
     
 # Запуск сервера
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 10000))  # Используем PORT из окружения или 10000
+    app.run(host='0.0.0.0', port=port, debug=False)  # Отключаем debug
