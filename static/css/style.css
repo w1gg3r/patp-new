@@ -1,0 +1,433 @@
+/* === Базовые стили === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #086699;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    font-size: 50px ;
+    font-family: "Comfortaa", serif;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 40px;
+    font-family: "Comfortaa", serif;
+    font-weight: 700;
+}
+
+.container {
+    width: 100%;    
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.bg-primary {
+    background-color: #007BFF;
+}
+
+.stat-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    background: linear-gradient(to right, #f9f9f9, #eaeaea);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition:  0.5s;
+}
+
+
+.stat-box:hover {
+    cursor: pointer;
+    color: #d85959;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: 0.7s;
+}
+
+.stats .num {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.stats .text-2 {
+    font-size: 1.2rem;
+}
+
+/* === Шапка === */
+
+.nav-link {
+    color: #0056b3 !important;
+}
+
+.nav-link-footer {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: var(--bs-nav-link-color);
+    text-decoration: none;
+    background: 0 0;
+    border: 0;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.dropdown-item {
+    color: #0056b3;
+    transition: all 0.3s ease-in;
+}
+
+.dropdown-item:hover{
+    color: #007BFF;
+    transform: scale(110%);
+}
+
+.dropdown-menu {
+    text-align: center;
+    padding: 15px;
+}
+
+/* === Выпадающее меню при наведении === */
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown-toggle {
+    z-index: 1111;
+}
+
+.dropdown .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+    min-width: 200px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown .dropdown-item:hover {
+    background-color: #f1f1f1;
+    color: #007BFF;
+}
+
+/* === Преимущества === */
+.advantages {
+    background-color: #f8f9fa;
+}
+
+.advantage-card {
+    background-color: white;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+    cursor: default;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon-box {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007BFF;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.advantage-card:hover .icon-box {
+    background-color: rgba(0, 123, 255, 0.2);
+}
+
+.advantage-card h4 {
+    font-weight: bold;
+}
+
+.advantage-card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* === Акционный баннер === */
+.ad {
+    background-color: #0d6efd;
+    color: white;
+    padding: 2rem 0;
+}
+
+.ad .btn-light {
+    color: #0d6efd;
+}
+
+.btn-light {
+    transition: 0.7s;
+}
+
+.btn-light:hover {
+    background-color: #0d6efd;
+    border: 1px solid #ffffff;
+    color: #fff;
+    transition: 0.5s;
+    transform: scale(110%);
+}
+
+.ad-banner {
+    background-color: rgb(6 12 151 / 84%);
+    color: white;
+    padding: 2rem 0;
+}
+
+.ad-banner .btn-light {
+    color: #0d6efd;
+}
+
+.advantages img {
+    max-width: 64px;
+
+    margin-bottom: 10px;
+}
+
+.advantages .col-md-3 {
+    transition: transform 0.3s ease;
+}
+
+.advantages .col-md-3:hover {
+    transform: scale(1.02);
+}
+
+.contact-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form .form-control:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.contact-form .btn-primary {
+    background-color: #007BFF;
+    border: none;
+    padding: 0.5rem 2rem;
+    font-weight: bold;
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.contacts iframe {
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    height: 400px;
+}
+
+.call-to-action {
+    margin-top: 2rem;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.btn-outline-light {
+    transition: 0.7s;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    transition: 0.6s;
+    transform: scale(110%);
+    border: none;
+}
+
+/* === Стили для карточек новостей === */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 50%;  /* Изображение занимает верхнюю половину */
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-img-single {
+    width: 100%;
+    height: 500px;
+    object-fit: cover; /* Изображение подстраивается без искажений */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-date {
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #007BFF;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    min-height: 200px;
+    position: relative;
+    background-color: #fff;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* === Swiper стили === */
+.swiper {
+    width: 100%;
+    padding: 30px 30px 60px 30px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px; /* Фиксируем высоту слайда */
+    min-height: 400px;
+}
+
+.swiper-slide:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* === Форма обратной связи === */
+.contact-form {
+    background-color: #cacaca54 !important;
+}
+
+
+.form-check {
+        margin-left: 10px;
+}
+
+.contact-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form .form-control:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.contact-form .btn-primary {
+    background-color: #007BFF;
+    border: none;
+    padding: 0.5rem 2rem;
+    font-weight: bold;
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* === Пагинация === */
+.pagination {
+    margin: 2rem 0;
+}
+
+.page-item .page-link {
+    color: #007BFF;
+    border-color: #dee2e6;
+}
+
+.page-item.active .page-link {
+    background-color: #007BFF;
+    border-color: #007BFF;
+    color: white;
+}
+
+.page-link:hover {
+    color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .banner .lead {
+        font-size: 1rem;
+    }
+
+    .ad-banner .text-end {
+        text-align: center !important;
+    }
+
+    .ad-banner .btn {
+        margin-top: 1rem;
+    }
+}

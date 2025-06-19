@@ -1,0 +1,91 @@
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-4">
+        <div class="container">
+            <!-- Логотип -->
+            <a class="navbar-brand" href="/">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="ПАТП №1" height="50">
+            </a>
+
+            <!-- Кнопка для мобильных -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Меню навигации -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Расписание -->
+                    <li class="nav-item dropdown hover-dropdown">
+                        <a class="nav-link dropdown-toggle" href="/schedule" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">Расписание</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://citybus35.ru">Умный  транспорт</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Оплата проезда -->
+                    <li class="nav-item dropdown hover-dropdown">
+                        <a class="nav-link dropdown-toggle" href="/payment" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">Оплата проезда</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/price">Стоимость проезда</a></li>
+                            <li><a class="dropdown-item" href="https://bilet.nspk.ru">Банковской  картой</a></li>
+                            <li><a class="dropdown-item" href="https://e-vologda.com">Электронная  Вологда</a></li>
+                            <li><a class="dropdown-item" href="https://t-karta.ru">История  поездок</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Услуги -->
+                    <li class="nav-item dropdown hover-dropdown">
+                        <a class="nav-link dropdown-toggle" href="/service" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">Услуги</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/charter">Заказные перевозки</a></li>
+                            <li><a class="dropdown-item" href="/passenger">Пассажирские перевозки</a></li>
+                            <li><a class="dropdown-item" href="/children">Перевозка детей</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Работа -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/work">Работа у нас</a>
+                    </li>
+
+                    <!-- Учебный центр -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://yc.mupatp1.ru">Учебный  центр</a>
+                    </li>
+
+                    <!-- О компании -->
+                    <li class="nav-item dropdown hover-dropdown">
+                        <a class="nav-link dropdown-toggle" href="/about-us" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">О компании</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/news">Новости</a></li>
+                            <li><a class="dropdown-item" href="/documents">Документы</a></li>
+                            <li><a class="dropdown-item" href="/anti-corruption">Противодействие коррупции</a></li>
+                            <li><a class="dropdown-item" href="/contact">Контакты</a></li>
+                            <li><a class="dropdown-item" href="https://вашбилет.рф">Ваш  билет</a></li>
+                            <li><a class="dropdown-item" href="/autopark">Автопарк</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Официальная информация -->
+                    <li class="nav-item dropdown hover-dropdown">
+                        <a class="nav-link dropdown-toggle" href="/official-information" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">Официальная информация</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/info-for-police-vologda">Информация от прокуратуры</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Ваш билет -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/your-ticket">Ваш билет</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

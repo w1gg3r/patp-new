@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ route.route_number }} — Маршруты{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm">
+                <img src="{{ url_for('static', filename='images/' + route.image) }}" class="card-img-top" alt="{{ route.route_number }}">
+                <div class="card-body">
+                    <h2 class="card-title">{{ route.route_number }}</h2>
+                    <p class="card-text">{{ route.description }}</p>
+                    <a href="/routes" class="btn btn-outline-secondary">&larr; К списку маршрутов</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

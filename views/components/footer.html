@@ -1,0 +1,90 @@
+<!-- components/footer.html -->
+<footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+        <div class="row">
+            <!-- О нас -->
+            <div class="col-md-4 mb-4">
+                <h5 class="text-uppercase mb-3">КОНТАКТЫ</h5>
+                <ul class="list-unstyled">
+                    <li class="d-flex align-items-center mb-2">
+                        <img src="{{ url_for('static', filename='images/phone-fff.svg') }}" alt="Телефон" width="20" class="me-2">
+                        <a href="tel:+78172556670" class="text-white text-decoration-none">+7 (8172) 55-66-70</a>
+                    </li>
+                    <li class="d-flex align-items-center mb-2">
+                        <img src="{{ url_for('static', filename='images/time-fff.svg') }}" alt="Время работы" width="20" class="me-2">
+                        <span>ПН-ПТ 08:00–17:00</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-2">
+                        <img src="{{ url_for('static', filename='images/email-fff.svg') }}" alt="Email" width="20" class="me-2">
+                        <a href="mailto:mail@mupatp1.ru" class="text-white text-decoration-none">mail@mupatp1.ru</a>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <img src="{{ url_for('static', filename='images/geo-fff.svg') }}" alt="Адрес" width="20" class="me-2">
+                        <a href="#contact" class="text-white text-decoration-none">ул. Мудрова, 31, Вологда</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Последние публикации -->
+            <div class="col-md-5 mb-4">
+                <h5 class="text-uppercase mb-3">Последние публикации</h5>
+                <div class="d-flex flex-column gap-3">
+                    <a href="/news" class="text-decoration-none text-white">
+                        <div class="d-flex align-items-start gap-3">
+                            <img src="{{ url_for('static', filename='images/news-item-1.png') }}" alt="Новость" width="80" class="rounded">
+                            <div>
+                                <p class="mb-1">В учебном классе ПАТП-1 в Вологде прошла встреча специалистов центра занятости с представителями компании.</p>
+                                <small class="text-muted">17/01/2025</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/news" class="text-decoration-none text-white">
+                        <div class="d-flex align-items-start gap-3">
+                            <img src="{{ url_for('static', filename='images/news-item-3.png') }}" alt="Новость" width="80" class="rounded">
+                            <div>
+                                <p class="mb-1">ПАТП №1 ждёт женщин-водителей на работу! И если кто скажет, что водитель — это не женская работа, то это вовсе не так.</p>
+                                <small class="text-muted">22/01/2025</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/news" class="text-decoration-none text-white">
+                        <div class="d-flex align-items-start gap-3">
+                            <img src="{{ url_for('static', filename='images/news-item-2.jpeg') }}" alt="Новость" width="80" class="rounded">
+                            <div>
+                                <p class="mb-1">Для более комфортной и быстрой оплаты во всех трёхдверных автобусах ПАТП №1 будут работать четыре терминала.</p>
+                                <small class="text-muted">07/02/2025</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Соцсети -->
+            <div class="col-md-3 mb-4 text-md-end text-center">
+                <h5 class="text-uppercase mb-3">Мы в соцсетях</h5>
+                <a href="https://vk.com/patp1vologda"  target="_blank" class="text-white fs-4 me-3">
+                    <img src="{{ url_for('static', filename='images/vk.svg') }}" alt="VK" width="32" class="social-icon">
+                </a>
+            </div>
+        </div>
+
+        <!-- Нижнее меню -->
+        <hr class="bg-light mb-3 mt-4">
+
+        <div class="row">
+            <div class="col-md-12 d-flex flex-wrap justify-content-between align-items-center">
+                <ul class="nav">
+                    <li class="nav-item"><a href="/schedule" class="nav-link-footer px-2 text-white">Расписание</a></li>
+                    <li class="nav-item"><a href="/price" class="nav-link-footer px-2 text-white">Оплата проезда</a></li>
+                    <li class="nav-item"><a href="/service" class="nav-link-footer px-2 text-white">Услуги</a></li>
+                    <li class="nav-item"><a href="/work" class="nav-link-footer px-2 text-white">Работа у нас</a></li>
+                    <li class="nav-item"><a href="https://yc.mupatp1.ru"  class="nav-link-footer px-2 text-white">Учебный центр</a></li>
+                    <li class="nav-item"><a href="/about-us" class="nav-link-footer px-2 text-white">О компании</a></li>
+                    <li class="nav-item"><a href="/official-information" class="nav-link-footer px-2 text-white">Официальная информация</a></li>
+                    <li class="nav-item"><a href="/your-ticket" class="nav-link-footer px-2 text-white">Ваш билет</a></li>
+                </ul>
+                <p class="mb-0">&copy; 2025 Rogalev</p>
+            </div>
+        </div>
+    </div>
+</footer>

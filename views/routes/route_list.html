@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Маршруты — ПАТП №1{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-5">Маршруты</h2>
+    <div class="row g-4">
+        {% for route in routes %}
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <img src="{{ url_for('static', filename='images/' + route.image) }}" class="card-img-top" alt="{{ route.route_number }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ route.route_number }}</h5>
+                    <p class="card-text">{{ route.description[:100] }}...</p>
+                    <a href="/routes/{{ route.id }}" class="btn btn-outline-primary btn-sm">Подробнее →</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
