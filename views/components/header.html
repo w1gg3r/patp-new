@@ -6,13 +6,13 @@
                 <img src="{{ url_for('static', filename='images/logo.png') }}" alt="ПАТП №1" height="50">
             </a>
 
-            <!-- Кнопка для мобильных -->
+            <!-- Мобильная кнопка -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Меню навигации -->
+            <!-- Основное меню -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <!-- Расписание -->
@@ -26,7 +26,7 @@
 
                     <!-- Оплата проезда -->
                     <li class="nav-item dropdown hover-dropdown">
-                        <a class="nav-link dropdown-toggle" href="/payment" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="/price" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">Оплата проезда</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/price">Стоимость проезда</a></li>
@@ -41,9 +41,9 @@
                         <a class="nav-link dropdown-toggle" href="/service" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">Услуги</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/charter">Заказные перевозки</a></li>
-                            <li><a class="dropdown-item" href="/passenger">Пассажирские перевозки</a></li>
-                            <li><a class="dropdown-item" href="/children">Перевозка детей</a></li>
+                            <li><a class="dropdown-item" href="/service/custom">Заказные перевозки</a></li>
+                            <li><a class="dropdown-item" href="/service/passenger">Пассажирские перевозки</a></li>
+                            <li><a class="dropdown-item" href="/service/children">Перевозка детей</a></li>
                         </ul>
                     </li>
 

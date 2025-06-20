@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}ПАТП №1{% endblock %}</title>
 
+
     <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat&display=swap" rel="stylesheet">
 
@@ -40,22 +41,97 @@
 <!-- Внизу перед </body> -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
 
-<!-- Инициализация Swiper -->
+<!-- Подключение Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+
+<!-- Инициализация -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const swiper = new Swiper('.mySwiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-        },
-        breakpoints: {
-            768: { slidesPerView: 2 },
-            992: { slidesPerView: 3 }
+    document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper('.mySwiper', {
+            slidesPerView: 1.2,
+            centeredSlides: true,  // Центрируем активный слайд
+            spaceBetween: 20,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '#news-next',
+                prevEl: '#news-prev'
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2.2,
+                    spaceBetween: 30
+                },
+                992: {
+                    slidesPerView: 3.2,
+                    spaceBetween: 30
+                }
+            },
+            slideToClickedSlide: true,  // При клике на слайд переходим к нему
+            on: {
+                init: function () {
+                    this.slides[this.activeIndex].classList.add('active-center');
+                },
+                slideChange: function () {
+                    // Убираем класс у всех, добавляем только активному
+                    this.slides.forEach(slide => slide.classList.remove('active-center'));
+                    this.slides[this.activeIndex].classList.add('active-center');
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    // Плавное появление меню при наведении
+    document.querySelectorAll('.hover-dropdown').forEach(dropdown => {
+        const menu = dropdown.querySelector('.dropdown-menu');
+
+        dropdown.addEventListener('mouseenter', () => {
+            dropdown.classList.add('show');
+            menu.classList.add('show');
+        });
+
+        dropdown.addEventListener('mouseleave', () => {
+            dropdown.classList.remove('show');
+            menu.classList.remove('show');
+        });
+    });
+</script>
+
+<!-- Toast-уведомление -->
+<div class="position-fixed bottom-0 start-0 m-3" id="toast-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div id="toast-{{ category }}" class="toast align-items-center text-bg-{{ category }} border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            {{ message }}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+<!-- Автоматическое отображение Toast -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toastContainer = document.getElementById('toast-container');
+
+        if (toastContainer && toastContainer.children.length > 0) {
+            Array.from(toastContainer.children).forEach(toastEl => {
+                const toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            });
         }
     });
-});
 </script>
 
 </body>

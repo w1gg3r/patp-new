@@ -1,0 +1,14 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Админ-панель — ПАТП №1{% endblock %}
+{% block content %}
+<div class="py-4">
+    <h2 class="mb-4">Добро пожаловать в админ-панель</h2>
+
+    <!-- Меню -->
+        <div class="card-body">
+            <a href="/admin/news" class="btn btn-outline-primary">Управление новостями</a>
+            <a href="/admin/feedback" class="btn btn-outline-primary">Просмотреть заявки</a>
+            <a href="/admin/orders" class="btn btn-outline-primary">Заказы на услуги</a>
+        </div>
+</div>
+{% endblock %}

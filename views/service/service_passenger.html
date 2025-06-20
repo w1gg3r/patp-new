@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Пассажирские перевозки — ПАТП №1 Вологда{% endblock %}
+{% block content %}
+<main class="page-content">
+    <div class="service-holder">
+        <h1 class="mb-5">Пассажирские перевозки</h1>
+        <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item"><a href="/service">Услуги</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Пассажирские перевозки</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- === Основной контент === -->
+    <div class="container">
+        <!-- === Преимущества в стиле сайта === -->
+        <section class="features-section py-4">
+            <div class="row g-4 justify-content-center text-center">
+                <!-- Карточка 1 -->
+                <div class="col-md-3">
+                    <div class="card advantage-card h-100 border-0 shadow-sm">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <div class="icon-box mb-3">
+                                <i class="bi bi-shield-check fs-1 text-primary"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Безопасность</h4>
+                            <p class="card-text text-center">
+                                Все автобусы оснащены ремнями безопасности и проходят строгий технический контроль.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="col-md-3">
+                    <div class="card advantage-card h-100 border-0 shadow-sm">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <div class="icon-box mb-3">
+                                <i class="bi bi-globe fs-1 text-primary"></i>
+                            </div>
+                            <h4 class="card-title mb-3">ГЛОНАСС</h4>
+                            <p class="card-text text-center">
+                                Каждый автобус отслеживается через спутниковую систему. Вы всегда знаете, где находится ваш автобус.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="col-md-3">
+                    <div class="card advantage-card h-100 border-0 shadow-sm">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <div class="icon-box mb-3">
+                                <i class="bi bi-clock-history fs-1 text-primary"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Тахографы</h4>
+                            <p class="card-text text-center">
+                                Работаем только с исправными автобусами. Тахографы контролируют режим водителей.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 4 -->
+                <div class="col-md-3">
+                    <div class="card advantage-card h-100 border-0 shadow-sm">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <div class="icon-box mb-3">
+                                <i class="bi bi-thermometer-snow fs-1 text-primary"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Комфорт</h4>
+                            <p class="card-text text-center">
+                                Все автобусы оснащены кондиционерами для комфортной поездки даже летом.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === Описание услуги === -->
+        <section class="description-section mb-5">
+            <div class="row">
+                <div class="col-md-12 mx-auto">
+                    <p class="lead">
+                        ПАТП №1 предоставляет услуги по пассажирским перевозкам на регулярных городских маршрутах.
+                        Наши автобусы ежедневно перевозят десятки тысяч пассажиров по самым разным направлениям.
+                    </p>
+
+                    <p class="mt-4">
+                        Мы гарантируем комфортную поездку, своевременное прибытие и безопасность пассажиров.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- === Дополнительно: как забронировать === -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3 class="h4 mb-3">Как забронировать место?</h3>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item">Оставьте заявку через форму на сайте</li>
+                            <li class="list-group-item">Мы свяжемся с вами и уточним детали</li>
+                            <li class="list-group-item">Подписываем договор и бронируем место</li>
+                            <li class="list-group-item">Автобус приезжает вовремя</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ url_for('static', filename='images/bus-passenger.jpg') }}" 
+                            alt="Пассажирский автобус" 
+                            class="img-fluid rounded shadow-sm">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === Контакты и кнопка заказа === -->
+        <section class="contact-support py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Справки по телефонам:</h3>
+                        <ul class="list-passanger">
+                            <li><strong>Диспетчерский отдел:</strong> 
+                                <a href="tel:+78172556670">(8172) 55-66-70</a>
+                            </li>
+                            <li><strong>Email:</strong> 
+                                <a href="mailto:mail@mupatp1.ru">mail@mupatp1.ru</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center justify-content-end">
+                        <div class="text-center">
+                            <a href="/contact" class="btn btn-primary btn-lg px-5">Оставить заявку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block title %}Перевозка детей — ПАТП №1{% endblock %}
+{% block content %}
+<main class="page-content">
+    <!-- === Основной контент === -->
+     <div class="service-holder">
+        <h1 class="service-title">Перевозка детей</h1>
+        <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item"><a href="/service">Услуги</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Перевозка детей</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- === Информация о перевозках === -->
+        <section class="service-description mb-5">
+            <h2 class="h3 mb-4">Информация о перевозках детей</h2>
+
+            <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item">
+                    <a href="{{ url_for('static', filename='docs/pamyatka_organizatoram_perevozok.doc') }}" target="_blank">
+                        ПАМЯТКА ОРГАНИЗАТОРАМ ПЕРЕВОЗОК
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ url_for('static', filename='docs/poshagovaya_instrukciya.pdf') }}" target="_blank">
+                        ПОШАГОВАЯ ИНСТРУКЦИЯ
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ url_for('static', filename='docs/zayavka.doc') }}" target="_blank">
+                        ФОРМА ЗАЯВКИ
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ url_for('static', filename='docs/forma-gibdd.doc') }}" target="_blank">
+                        УВЕДОМЛЕНИЕ ГИБДД
+                    </a>
+                </li>
+            </ul>
+
+            <p class="mb-4">
+                Для подачи заявки на согласование перевозки организованных групп детей автобусами по территории Вологодской области и за пределы региона (в соответствии с постановлением Правительства РФ № 1177 от 2013 года):
+            </p>
+
+            <!-- === Контакты === -->
+            <div class="contact-info bg-light p-4 rounded shadow-sm mb-5">
+                <ul class="list-unstyled">
+                    <li><strong>Адрес электронной почты:</strong> <a href="mailto:35@gibdd.ru">35@gibdd.ru</a></li>
+                    <li><strong>Телефон/факс:</strong> 
+                        <a href="tel:+78172540604">+7 (8172) 54-06-04</a> или 
+                        <a href="tel:765023">76-50-23</a>
+                    </li>
+                    <li class="mt-2">
+                        <strong>Телефоны для контактов:</strong>
+                        <ul class="mt-2 ps-4">
+                            <li>Отдел дорожно-патрульной службы: <a href="tel:+78172765036">+7 (8172) 76-50-36</a></li>
+                            <li>Отдел технического надзора: <a href="tel:+78172765042">+7 (8172) 76-50-42</a></li>
+                            <li>Канцелярия: <a href="tel:+78172765003">+7 (8172) 76-50-03</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <p class="mb-4">
+                ПАТП №1 информирует о принятии Правительством Российской Федерации 
+                <a href="{{ url_for('static', filename='docs/postanovlenie_no652.pdf') }}" target="_blank">
+                    постановления от 30 июня 2015 года № 652
+                </a> 
+                «О внесении изменений в некоторые акты Правительства Российской Федерации в части совершенствования правил организованной перевозки группы детей автобусами».
+            </p>
+
+            <!-- === Процедура перевозки === -->
+            <section class="procedure-section">
+                <h2 class="h3 mb-4">Процедура перевозки</h2>
+                <p class="mb-4">
+                    Перевозка организованных групп детей — это сложное и ответственное дело. Заниматься этим могут только лицензированные транспортные компании.
+                    У ПАТП №1 есть необходимая лицензия. Все автобусы оборудованы:
+                </p>
+
+                <!-- Этапы перевозки -->
+                <div class="row g-4">
+                    <!-- Этап 1 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="step-icon mb-3">
+                                    <img src="{{ url_for('static', filename='images/contract.jpg') }}" alt="Договор" width="64">
+                                </div>
+                                <h4 class="card-title mb-3">Этап 1: Договор</h4>
+                                <p class="card-text">
+                                    Заключение договора фрахтования между организатором перевозки и компанией-перевозчиком.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Этап 2 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="step-icon mb-3">
+                                    <img src="{{ url_for('static', filename='images/documents.jpg') }}" alt="Документы" width="64">
+                                </div>
+                                <h4 class="card-title mb-3">Этап 2: Подготовка документов</h4>
+                                <p class="card-text">
+                                    Подготовка списков детей, сопровождающих, графика движения и маршрута.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Этап 3 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="step-icon mb-3">
+                                    <img src="{{ url_for('static', filename='images/gibdd.jpg') }}" alt="ГИБДД" width="64">
+                                </div>
+                                <h4 class="card-title mb-3">Этап 3: Согласование с ГИБДД</h4>
+                                <p class="card-text">
+                                    Согласование перевозки в ГИБДД и подача заявки на сопровождение минимум за 10 дней до поездки.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Этап 4 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="step-icon mb-3">
+                                    <img src="{{ url_for('static', filename='images/decision.jpg') }}" alt="Решение" width="64">
+                                </div>
+                                <h4 class="card-title mb-3">Этап 4: Решение ГИБДД</h4>
+                                <p class="card-text">
+                                    ГИБДД проверяет документы, водителя и автобус, после чего принимает решение о сопровождении.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Этап 5 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="step-icon mb-3">
+                                    <img src="{{ url_for('static', filename='images/transport.jpg') }}" alt="Перевозка" width="64">
+                                </div>
+                                <h4 class="card-title mb-3">Этап 5: Перевозка</h4>
+                                <p class="card-text">
+                                    Сама перевозка, в ходе которой соблюдаются все требования закона.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- === Кнопка заказа === -->
+                <div class="text-center mt-5">
+                    <a href="/contact" class="btn btn-primary btn-lg px-5">
+                        Забронировать автобус
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+{% endblock %}

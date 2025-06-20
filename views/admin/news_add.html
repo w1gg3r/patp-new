@@ -1,0 +1,24 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Добавить новость — ПАТП №1{% endblock %}
+{% block content %}
+<h3 class="mb-4">Добавить новость</h3>
+
+<form action="/admin/news/add" method="POST">
+    <div class="mb-3">
+        <label for="title" class="form-label">Заголовок</label>
+        <input type="text" id="title" name="title" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">Текст новости</label>
+        <textarea id="content" name="content" class="form-control" rows="6" required></textarea>
+    </div>
+    
+    <!-- Кнопка загрузки изображения -->
+    <div class="mb-3">
+        <label for="image" class="form-label">Загрузить изображение</label>
+        <input type="file" id="image" name="image" class="form-control" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Добавить новость</button>
+</form>
+{% endblock %}

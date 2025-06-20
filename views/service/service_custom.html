@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Заказные перевозки — ПАТП №1 Вологда{% endblock %}
+{% block content %}
+<main class="page-content">
+    <div class="service-holder">
+        <h1 class="mb-5">Заказные перевозки</h1>
+        <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item"><a href="/service">Услуги</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Заказные перевозки</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- === Основной контент === -->
+    <div class="container">
+
+        <!-- === Описание услуги === -->
+        <section class="service-description mb-5">
+            <p class="lead">
+                Заказные перевозки — одна из самых популярных услуг, предлагаемая ПАТП № 1. На нашем предприятии вы можете арендовать автобус для самых разных целей.
+            </p>
+
+            <!-- === Преимущества === -->
+            <div class="mt-4">
+                <h3 class="h5 mb-3">Почему стоит выбрать нас?</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i> Гибкие цены
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i> Индивидуальный подход
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i> Автобусы различной вместимости и комфортности
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i> Страховка пассажиров
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i> Опытные водители-профессионалы
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i> Всегда исправная техника
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- === Услуги === -->
+        <!-- === Направления заказных перевозок === -->
+        <section class="service-cards py-5 bg-light">
+            <div class="container">
+                <h2 class="h3 mb-5 text-left">Направления заказных перевозок</h2>
+
+                <div class="row g-4">
+                    <!-- Карточка 1 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm position-relative">
+                            <img src="{{ url_for('static', filename='images/staff.jpg') }}" 
+                                 alt="Доставка работников" 
+                                 class="card-img-top" 
+                                 style="height: 200px; object-fit: cover;">
+                            
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title mb-3">Доставка работников</h5>
+                                <p class="card-text text-truncate-2">
+                                    Служебный автобус — настоящее спасение для организаций, расположенных за городом и в неудобных местах.
+                                </p>
+                                <a href="/contact" class="btn btn-outline-primary btn-sm mt-auto">Забронировать</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 2 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm position-relative">
+                            <img src="{{ url_for('static', filename='images/marry.jpg') }}" 
+                                 alt="Аренда автобуса на свадьбу" 
+                                 class="card-img-top" 
+                                 style="height: 200px; object-fit: cover;">
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title mb-3">Аренда автобуса на свадьбу</h5>
+                                <p class="card-text text-truncate-2">
+                                    Широкому торжеству не обойтись без хорошей транспортной поддержки. Автобус станет идеальным вариантом для перевозки множества гостей.
+                                </p>
+                                <a href="/contact" class="btn btn-outline-primary btn-sm mt-auto">Забронировать</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 3 -->
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm position-relative">
+                            <img src="{{ url_for('static', filename='images/perevoz.jpg') }}" 
+                                 alt="Перевозка к местам проведения отдыха" 
+                                 class="card-img-top" 
+                                 style="height: 200px; object-fit: cover;">
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title mb-3">Перевозка к местам проведения отдыха</h5>
+                                <p class="card-text text-truncate-2">
+                                    Это незаменимая услуга для компаний, которые любят проводить выездные корпоративы. Это удобно и выгодно, ведь при выезде можно перевезти не только людей.
+                                </p>
+                                <a href="/contact" class="btn btn-outline-primary btn-sm mt-auto">Забронировать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === Кнопка заказа внизу === -->
+        <div class="text-center mt-5 mb-5">
+            <a href="/contact" class="btn btn-primary btn-lg px-5">Забронировать автобус</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

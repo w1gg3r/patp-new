@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% block title %}Главная страница — ПАТП №1 Вологда{% endblock %}
-
 {% block content %}
 <main>
     <!-- Баннер -->
@@ -46,7 +44,7 @@
         </div>
     </section>
 
-<!-- Акцентный баннер -->
+    <!-- Акцентный баннер -->
     <section class="ad-banner text-white p-4">
         <div class="container">
             <div class="row align-items-center">
@@ -145,45 +143,64 @@
             </div>
         </div>
     </section>
-    
-   <!-- Новости -->
+
+
+ <!-- Новости -->
 <section class="news py-5 bg-light">
     <div class="container">
-        <h2 class="text-left mb-5">Новости</h2>
+        <!-- Заголовок и навигация -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-left mb-0">Новости</h2>
+            <!-- Кнопки навигации -->
+            <div class="news-controls d-none d-md-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm" id="news-prev"><i class="bi bi-arrow-left"></i></button>
+                <button class="btn btn-outline-primary btn-sm" id="news-next"><i class="bi bi-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Слайдер -->
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                {% for post in latest_news %}
+                {% for post in news %}
                 <div class="swiper-slide">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <!-- Дата в левом верхнем углу -->
-                        <div class="card-date">{{ post.created_at[:10] }}</div>
-
+                    <div class="card h-100 border-0 shadow-sm position-relative">
+                        <!-- Дата в углу -->
+                        <small class="card-date text-white bg-primary px-2 py-1 rounded-end">{{ post.created_at[:10] }}</small>
+                        
                         <!-- Изображение -->
-                        <img src="{{ url_for('static', filename='images/' + post.image) }}" class="card-img-top" alt="{{ post.title }}">
-
-                        <!-- Текст новости -->
-                        <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/' + (post.image or 'placeholder.png')) }}" 
+                             class="card-img-top" 
+                             alt="{{ post.title }}"
+                             style="height: 200px; object-fit: cover;">
+                        
+                        <!-- Контент -->
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title mt-2">{{ post.title }}</h5>
-                            <p class="card-text">{{ post.content[:100] }}...</p>
                             
-                            <!-- Кнопка внизу -->
-                            <div>
-                                <a href="/news/{{ post.id }}" class="btn btn-outline-primary btn-sm w-100">Читать далее →</a>
-                            </div>
+                            <!-- Описание с ограничением строк -->
+                            <p class="card-text text-truncate-2 mb-3">
+                                {{ post.content }}
+                            </p>
+                            
+                            <!-- Кнопка -->
+                            <a href="/news/{{ post.id }}" class="btn btn-outline-primary btn-sm mt-auto">Читать далее →</a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            <div class="swiper-pagination"></div>
+            
+            <!-- Пагинация -->
+            <div class="swiper-pagination mt-4"></div>
         </div>
     </div>
 </section>
 
+
     <!-- Обратная связь -->
     <section class="contact-form py-5 bg-light">
         <div class="container">
-            <h2 class="text-left mb-5">Свяжитесь с нами</h2>
+            <h2 class="text-left mb-5">Обратная связь</h2>
             <form action="/submit-feedback" method="POST">
                 <div class="row g-3">
                     <div class="col-md-6">
@@ -195,7 +212,7 @@
                         <input type="email" id="email" name="email" placeholder="ivanov@email.ru" class="form-control" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="phone" class="form-label">Телефон*</label>
+                        <label for="telephone" class="form-label">Телефон*</label>
                         <input type="tel" id="telephone" name="telephone" placeholder="+7 (900) 000-00-00" class="form-control" required>
                     </div>
                     <div class="col-md-6">
@@ -203,16 +220,16 @@
                         <input type="text" id="subject" name="subject" placeholder="Тема вашего обращения" class="form-control">
                     </div>
                     <div class="col-12">
-                        <label for="message" class="form-label">Сообщение*</label>
-                        <textarea id="message" name="message" placeholder="Введите ваше сообщение..." class="form-control" rows="4" required></textarea>
+                        <label for="message" class="form-label">Ваш вопрос*</label>
+                        <textarea id="message" name="message" class="form-control" rows="12" required></textarea>
                     </div>
                     <div class="col-12 form-check mt-3">
-                        <input type="checkbox" id="privacy-check" class="form-check-input" required>
-                        <label for="privacy-check" class="form-check-label text-muted">
+                        <input class="form-check-input" type="checkbox" id="privacy-check" name="consent" required>
+                        <label class="form-check-label text-muted" for="privacy-check">
                             Соглашаюсь c условиями <a href="/uploads/mupatp_politic.pdf" target="_blank" class="text-decoration-underline">политики конфиденциальности</a>
                         </label>
                     </div>
-                    <div class="col-12 text-center mt-3">
+                    <div class="col-12 text-start mt-3">
                         <button type="submit" class="btn btn-primary px-4">Отправить</button>
                     </div>
                 </div>

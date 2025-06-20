@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     color: #086699;
@@ -12,7 +16,7 @@ body {
 }
 
 h1 {
-    font-size: 50px ;
+    font-size: 50px;
     font-family: "Comfortaa", serif;
     font-weight: 700;
 }
@@ -24,7 +28,7 @@ h2 {
 }
 
 .container {
-    width: 100%;    
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 15px;
@@ -41,9 +45,8 @@ h2 {
     border-radius: 8px;
     background: linear-gradient(to right, #f9f9f9, #eaeaea);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition:  0.5s;
+    transition: 0.5s;
 }
-
 
 .stat-box:hover {
     cursor: pointer;
@@ -63,21 +66,8 @@ h2 {
 }
 
 /* === Шапка === */
-
 .nav-link {
     color: #0056b3 !important;
-}
-
-.nav-link-footer {
-    display: block;
-    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
-    font-size: var(--bs-nav-link-font-size);
-    font-weight: var(--bs-nav-link-font-weight);
-    color: var(--bs-nav-link-color);
-    text-decoration: none;
-    background: 0 0;
-    border: 0;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
 .dropdown-item {
@@ -85,42 +75,69 @@ h2 {
     transition: all 0.3s ease-in;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
     color: #007BFF;
     transform: scale(110%);
 }
 
+/* === Плавное появление dropdown === */
 .dropdown-menu {
-    text-align: center;
-    padding: 15px;
-}
-
-/* === Выпадающее меню при наведении === */
-.dropdown:hover .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition: all 0.3s ease-in-out;
-}
-
-.dropdown-toggle {
-    z-index: 1111;
-}
-
-.dropdown .dropdown-menu {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: all 0.3s ease-in-out;
-    min-width: 200px;
+    transition: all 0.3s ease;
+    display: block !important;
+    max-height: 0;
+    overflow: hidden;
     border: 1px solid #ddd;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 10px;
 }
 
-.dropdown .dropdown-item:hover {
+.dropdown:hover .dropdown-menu,
+.dropdown.show .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    max-height: 300px;
+    transition: all 0.5s ease;
+    margin-top: 8px;
+}
+
+/* === Эффект при наведении на пункт меню === */
+.dropdown-item {
+    transition: background-color 0.5s ease, padding-left 0.5s ease;
+}
+
+.dropdown-item:hover {
     background-color: #f1f1f1;
+    padding-left: 20px;
+}
+
+/* === Кнопки рядом со слайдером === */
+.news-controls .btn,
+.col-md-2 .btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    border: 2px solid #007BFF;
     color: #007BFF;
+    z-index: 1;
+}
+
+.news-controls .btn:hover,
+.col-md-2 .btn:hover {
+    background-color: #007BFF;
+    color: white;
+    transform: scale(1.1);
 }
 
 /* === Преимущества === */
@@ -205,7 +222,6 @@ h2 {
 
 .advantages img {
     max-width: 64px;
-
     margin-bottom: 10px;
 }
 
@@ -217,6 +233,7 @@ h2 {
     transform: scale(1.02);
 }
 
+/* === Форма обратной связи === */
 .contact-form label {
     font-weight: bold;
     display: block;
@@ -263,6 +280,14 @@ h2 {
     border: none;
 }
 
+input {
+    padding: 10px !important;
+}
+
+.form-check {
+    margin-left: 10px !important;
+}
+
 /* === Стили для карточек новостей === */
 .card {
     display: flex;
@@ -270,18 +295,14 @@ h2 {
     height: 100%;
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: scale(1.02);
 }
 
 .card-img-top {
     width: 100%;
-    height: 50%;  /* Изображение занимает верхнюю половину */
+    height: 200px;
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -290,7 +311,7 @@ h2 {
 .card-img-single {
     width: 100%;
     height: 500px;
-    object-fit: cover; /* Изображение подстраивается без искажений */
+    object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -314,7 +335,8 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    min-height: 200px;
+    min-height: 120px;
+    gap: 20px;
     position: relative;
     background-color: #fff;
 }
@@ -337,8 +359,9 @@ h2 {
 /* === Swiper стили === */
 .swiper {
     width: 100%;
-    padding: 30px 30px 60px 30px;
-}
+    padding-top: 30px;
+    padding-bottom: 90px;
+} 
 
 .swiper-slide {
     text-align: center;
@@ -346,17 +369,12 @@ h2 {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 400px; /* Фиксируем высоту слайда */
+    height: 400px;
     min-height: 400px;
-}
-
-.swiper-slide:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .swiper-slide img {
@@ -364,70 +382,399 @@ h2 {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-/* === Форма обратной связи === */
-.contact-form {
-    background-color: #cacaca54 !important;
+.swiper-slide:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-
-.form-check {
-        margin-left: 10px;
+.swiper-slide-center,
+.swiper-slide.active-center {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    z-index: 10;
 }
 
-.contact-form label {
-    font-weight: bold;
-    display: block;
+.swiper-slide-center img,
+.swiper-slide.active-center img {
+    transform: scale(1.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* === Для карточек в футере === */
+.footer-news-card {
+    background-color: #1a1a1a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-news-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* === Toast уведомления === */
+.toast-container {
+    z-index: 1050;
+    max-width: 300px;
+}
+
+.toast.text-bg-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.toast.text-bg-danger,
+.toast.text-bg-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* === Футер === */
+.footer-news-card {
+    display: flex;
+    align-items: stretch;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-news-card:hover {
+    background-color: #2a2a2a;
+    transform: scale(1.01);
+}
+
+.footer-news-card .footer-news-image {
+    flex: 0 0 120px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.footer-news-card .footer-news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: none; /* Убрали scale с изображения */
+}
+
+.footer-news-card h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
     margin-bottom: 0.5rem;
 }
 
-.contact-form .form-control:focus {
+.footer-news-card .text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3em;
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+.footer-news-card small.text-muted {
+    font-size: 0.8rem;
+    color: #bbbbbb;
+}
+
+.text-footer {
+    color: #fff !important;
+}
+
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3em;
+}
+
+.list-unstyled {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 30px;
+    height: 200px;
+}
+
+/* === Админка === */
+.admin-login .form-control:focus {
     border-color: #007BFF;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.contact-form .btn-primary {
+.admin-login .btn-primary {
     background-color: #007BFF;
     border: none;
     padding: 0.5rem 2rem;
     font-weight: bold;
 }
 
-.contact-form .btn-primary:hover {
+.admin-login .btn-primary:hover {
     background-color: #0056b3;
 }
 
-/* === Пагинация === */
-.pagination {
-    margin: 2rem 0;
+.pdo-150 {
+    padding: 150px 0 150px 0;
 }
 
-.page-item .page-link {
-    color: #007BFF;
-    border-color: #dee2e6;
+/* === Админка: таблицы === */
+.admin-table th, .admin-table td {
+    display: flex;
+    justify-content: center !important;
+    vertical-align: middle;
+    padding: 0.75rem;
 }
 
-.page-item.active .page-link {
+.table {
+    text-align: center;
+}
+
+.admin-table .btn {
+    font-size: 0.8rem;
+}
+
+/* === Админка: форма === */
+.admin-form {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* === Статусы заявок === */
+.badge.bg-primary {
     background-color: #007BFF;
-    border-color: #007BFF;
-    color: white;
 }
 
-.page-link:hover {
-    color: #0056b3;
+.badge.bg-success {
+    background-color: #28a745;
 }
 
-@media (max-width: 768px) {
-    .banner .lead {
-        font-size: 1rem;
-    }
+.badge.bg-warning {
+    background-color: #ffc107;
+}
 
-    .ad-banner .text-end {
-        text-align: center !important;
-    }
+.badge.bg-danger {
+    background-color: #dc3545;
+}
 
-    .ad-banner .btn {
-        margin-top: 1rem;
-    }
+.badge.bg-secondary {
+    background-color: #6c757d;
+}
+
+/* === Форма обновления статуса === */
+.form-select-sm {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.badge {
+    font-size: 0.85rem;
+    padding: 0.5em 0.7em;
+    border-radius: 4px;
+}
+
+/* === Админка: действия в таблице === */
+.admin-table .btn {
+    font-size: 0.8rem;
+}
+
+/* Убираем отступы между формами */
+.admin-table .me-2 {
+    margin-right: 0.5rem !important;
+}
+
+.move {
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+.move button{
+    margin-left: 20px;
+}
+
+
+/* === Услуги === */
+.card.advantage-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon-box {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007BFF;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.card.advantage-card:hover .icon-box {
+    background-color: rgba(0, 123, 255, 0.2);
+}
+
+.service-card {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* === Этапы перевозки === */
+.step-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-icon img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card h4.card-title {
+    font-size: 1.2rem;
+}
+
+.card .card-text {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.service-holder {
+    margin: 100px;
+    margin-left: 200px;
+}
+
+.list-group {
+    padding: 10px;
+    gap: 10px;
+    border-radius: 10px;
+}
+
+.list-group-item {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+/* === Услуги: карточки === */
+.advantage-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.step-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 123, 255, 0.1);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.advantage-card:hover .step-icon {
+    background-color: rgba(0, 123, 255, 0.2);
+}
+
+/* === Преимущества === */
+.advantage-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon-box {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 123, 255, 0.1);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.advantage-card:hover .icon-box {
+    background-color: rgba(0, 123, 255, 0.2);
+}
+
+.list-passanger {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+/* === FAQ: аккордеон === */
+.accordion .accordion-button {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    border: none;
+    padding: 1rem 1.5rem;
+    position: relative;
+}
+
+.accordion .accordion-button:hover {
+    background-color: #e9ecef;
+}
+
+.accordion .accordion-button::after {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.accordion .accordion-button[aria-expanded="true"]::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion .accordion-body {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    padding: 1rem 1.5rem;
+}
+
+.accordion .accordion-header {
+    border: none;
+}
+
+.table-responsive {
+    width: 100%;
+    padding: 10px;
 }

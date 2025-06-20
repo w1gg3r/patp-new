@@ -1,4 +1,3 @@
-<!-- components/footer.html -->
 <footer class="bg-dark text-white pt-5 pb-4">
     <div class="container">
         <div class="row">
@@ -29,33 +28,24 @@
             <div class="col-md-5 mb-4">
                 <h5 class="text-uppercase mb-3">Последние публикации</h5>
                 <div class="d-flex flex-column gap-3">
-                    <a href="/news" class="text-decoration-none text-white">
-                        <div class="d-flex align-items-start gap-3">
-                            <img src="{{ url_for('static', filename='images/news-item-1.png') }}" alt="Новость" width="80" class="rounded">
-                            <div>
-                                <p class="mb-1">В учебном классе ПАТП-1 в Вологде прошла встреча специалистов центра занятости с представителями компании.</p>
-                                <small class="text-muted">17/01/2025</small>
-                            </div>
+                    {% for post in latest_news %}
+                    <a href="/news/{{ post.id }}" class="text-decoration-none text-white d-flex align-items-stretch gap-3 footer-news-card">
+                        <!-- Изображение растянуто по высоте -->
+                        <div class="footer-news-image" style="flex: 0 0 120px;">
+                            <img src="{{ url_for('static', filename='images/' + (post.image or 'placeholder.png')) }}" 
+                                alt="{{ post.title }}" 
+                                class="rounded"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+
+                        <!-- Заголовок, описание, дата -->
+                        <div class="flex-grow-1">
+                            <h6 class="card-title mb-2">{{ post.title }}</h6>
+                            <p class="text-footer small mb-2 text-truncate-2">{{ post.content }}</p>
+                            <small class="text-footer">{{ post.created_at[:10] }}</small>
                         </div>
                     </a>
-                    <a href="/news" class="text-decoration-none text-white">
-                        <div class="d-flex align-items-start gap-3">
-                            <img src="{{ url_for('static', filename='images/news-item-3.png') }}" alt="Новость" width="80" class="rounded">
-                            <div>
-                                <p class="mb-1">ПАТП №1 ждёт женщин-водителей на работу! И если кто скажет, что водитель — это не женская работа, то это вовсе не так.</p>
-                                <small class="text-muted">22/01/2025</small>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/news" class="text-decoration-none text-white">
-                        <div class="d-flex align-items-start gap-3">
-                            <img src="{{ url_for('static', filename='images/news-item-2.jpeg') }}" alt="Новость" width="80" class="rounded">
-                            <div>
-                                <p class="mb-1">Для более комфортной и быстрой оплаты во всех трёхдверных автобусах ПАТП №1 будут работать четыре терминала.</p>
-                                <small class="text-muted">07/02/2025</small>
-                            </div>
-                        </div>
-                    </a>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -63,7 +53,7 @@
             <div class="col-md-3 mb-4 text-md-end text-center">
                 <h5 class="text-uppercase mb-3">Мы в соцсетях</h5>
                 <a href="https://vk.com/patp1vologda"  target="_blank" class="text-white fs-4 me-3">
-                    <img src="{{ url_for('static', filename='images/vk.svg') }}" alt="VK" width="32" class="social-icon">
+                    <img src="{{ url_for('static', filename='images/VK-fff.svg') }}" alt="VK" width="48" class="social-icon">
                 </a>
             </div>
         </div>
