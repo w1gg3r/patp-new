@@ -66,7 +66,7 @@
                                 </form>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal{{ application['id'] }}">
+                                <button type="button" class="btn btn-sm btn-info dropdown-toggle-btn" data-target="detailBlock{{ application['id'] }}">
                                     <i class="bi bi-eye"></i>
                                 </button>
                                 <form action="/admin/work-application/{{ application['id'] }}/delete" method="POST" class="d-inline">
@@ -77,72 +77,73 @@
                             </td>
                         </tr>
 
-                        <!-- Модальное окно с деталями заявки -->
-                        <div class="modal fade" id="detailModal{{ application['id'] }}" tabindex="-1" aria-labelledby="detailModalLabel{{ application['id'] }}" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="detailModalLabel{{ application['id'] }}">Детали заявки #{{ application['id'] }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <p><strong>ФИО:</strong> {{ application['name'] }}</p>
-                                                <p><strong>Телефон:</strong> {{ application['telephone'] }}</p>
-                                                <p><strong>Email:</strong> {{ application['email'] }}</p>
-                                                <p><strong>Возраст:</strong> {{ application['age'] }}</p>
-                                                <p><strong>Опыт работы:</strong> 
-                                                    {% if application['experience'] == 'no_experience' %}
-                                                        Нет опыта
-                                                    {% elif application['experience'] == 'less_than_1' %}
-                                                        Менее 1 года
-                                                    {% elif application['experience'] == '1_to_3' %}
-                                                        От 1 до 3 лет
-                                                    {% elif application['experience'] == '3_to_5' %}
-                                                        От 3 до 5 лет
-                                                    {% elif application['experience'] == 'more_than_5' %}
-                                                        Более 5 лет
-                                                    {% else %}
-                                                        {{ application['experience'] }}
+                        <!-- Выпадающий блок с деталями заявки -->
+                        <tr>
+                            <td colspan="7" class="p-0">
+                                <div class="dropdown-block" id="detailBlock{{ application['id'] }}">
+                                    <button class="dropdown-header">
+                                        <span class="dropdown-title">Детали заявки #{{ application['id'] }}</span>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p><strong>ФИО:</strong> {{ application['name'] }}</p>
+                                                    <p><strong>Телефон:</strong> {{ application['telephone'] }}</p>
+                                                    <p><strong>Email:</strong> {{ application['email'] }}</p>
+                                                    <p><strong>Возраст:</strong> {{ application['age'] }}</p>
+                                                    <p><strong>Опыт работы:</strong> 
+                                                        {% if application['experience'] == 'no_experience' %}
+                                                            Нет опыта
+                                                        {% elif application['experience'] == 'less_than_1' %}
+                                                            Менее 1 года
+                                                        {% elif application['experience'] == '1_to_3' %}
+                                                            От 1 до 3 лет
+                                                        {% elif application['experience'] == '3_to_5' %}
+                                                            От 3 до 5 лет
+                                                        {% elif application['experience'] == 'more_than_5' %}
+                                                            Более 5 лет
+                                                        {% else %}
+                                                            {{ application['experience'] }}
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p><strong>Образование:</strong>
+                                                        {% if application['education'] == 'secondary' %}
+                                                            Среднее
+                                                        {% elif application['education'] == 'specialized_secondary' %}
+                                                            Среднее специальное
+                                                        {% elif application['education'] == 'incomplete_higher' %}
+                                                            Неоконченное высшее
+                                                        {% elif application['education'] == 'higher' %}
+                                                            Высшее
+                                                        {% else %}
+                                                            {{ application['education'] }}
+                                                        {% endif %}
+                                                    </p>
+                                                    <p><strong>Водительское удостоверение:</strong> {{ application['driving_license'] }}</p>
+                                                    <p><strong>Дата подачи:</strong> {{ application['created_at'] }}</p>
+                                                    {% if application['resume_file'] %}
+                                                    <p><strong>Резюме:</strong> <a href="/static/uploads/{{ application['resume_file'] }}" target="_blank" class="btn btn-sm btn-outline-primary">Скачать резюме</a></p>
                                                     {% endif %}
-                                                </p>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p><strong>Образование:</strong>
-                                                    {% if application['education'] == 'secondary' %}
-                                                        Среднее
-                                                    {% elif application['education'] == 'specialized_secondary' %}
-                                                        Среднее специальное
-                                                    {% elif application['education'] == 'incomplete_higher' %}
-                                                        Неоконченное высшее
-                                                    {% elif application['education'] == 'higher' %}
-                                                        Высшее
-                                                    {% else %}
-                                                        {{ application['education'] }}
-                                                    {% endif %}
-                                                </p>
-                                                <p><strong>Водительское удостоверение:</strong> {{ application['driving_license'] }}</p>
-                                                <p><strong>Дата подачи:</strong> {{ application['created_at'] }}</p>
-                                                {% if application['resume_file'] %}
-                                                <p><strong>Резюме:</strong> <a href="/static/uploads/{{ application['resume_file'] }}" target="_blank" class="btn btn-sm btn-outline-primary">Скачать резюме</a></p>
-                                                {% endif %}
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h6>Дополнительная информация:</h6>
+                                                    <p>{{ application['message'] }}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h6>Дополнительная информация:</h6>
-                                                <p>{{ application['message'] }}</p>
-                                            </div>
+                                        <div class="dropdown-footer">
+                                            <button type="button" class="dropdown-btn dropdown-btn-secondary close-dropdown">Закрыть</button>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </td>
+                        </tr>
                         {% endfor %}
                     </tbody>
                 </table>

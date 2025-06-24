@@ -45,7 +45,7 @@
                                 {% endif %}
                             </td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal{{ post.id }}">
+                                <button type="button" class="btn btn-sm btn-info dropdown-toggle-btn" data-target="detailBlock{{ post.id }}">
                                     <i class="bi bi-eye"></i>
                                 </button>
                                 <a href="/admin/news/{{ post.id }}/edit" class="btn btn-sm btn-warning">
@@ -59,32 +59,33 @@
                             </td>
                         </tr>
 
-                        <!-- Модальное окно с деталями новости -->
-                        <div class="modal fade" id="detailModal{{ post.id }}" tabindex="-1" aria-labelledby="detailModalLabel{{ post.id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="detailModalLabel{{ post.id }}">{{ post.title }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        {% if post.image %}
-                                        <img src="{{ url_for('static', filename='images/' + post.image) }}" alt="{{ post.title }}" class="img-fluid mb-3">
-                                        {% endif %}
-                                        <p><strong>Дата публикации:</strong> {{ post.created_at }}</p>
-                                        <hr>
-                                        <div class="mt-3">
-                                            <h6>Содержание новости:</h6>
-                                            <p>{{ post.content }}</p>
+                        <!-- Выпадающий блок с деталями новости -->
+                        <tr>
+                            <td colspan="5" class="p-0">
+                                <div class="dropdown-block" id="detailBlock{{ post.id }}">
+                                    <button class="dropdown-header">
+                                        <span class="dropdown-title">{{ post.title }}</span>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-body">
+                                            {% if post.image %}
+                                            <img src="{{ url_for('static', filename='images/' + post.image) }}" alt="{{ post.title }}" class="img-fluid mb-3">
+                                            {% endif %}
+                                            <p><strong>Дата публикации:</strong> {{ post.created_at }}</p>
+                                            <hr>
+                                            <div class="mt-3">
+                                                <h6>Содержание новости:</h6>
+                                                <p>{{ post.content }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-footer">
+                                            <a href="/admin/news/{{ post.id }}/edit" class="dropdown-btn dropdown-btn-warning">Редактировать</a>
+                                            <button type="button" class="dropdown-btn dropdown-btn-secondary close-dropdown">Закрыть</button>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <a href="/admin/news/{{ post.id }}/edit" class="btn btn-warning">Редактировать</a>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </td>
+                        </tr>
                         {% endfor %}
                     </tbody>
                 </table>

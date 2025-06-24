@@ -60,141 +60,318 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
 
-    <script>
-    // Исправление моргания модальных окон в админ-панели
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Admin modals fix loaded');
-        
-        // Функция для очистки всех backdrop элементов
-        function clearBackdrops() {
-            const backdrops = document.querySelectorAll('.modal-backdrop');
-            backdrops.forEach(backdrop => backdrop.remove());
-        }
-        
-        // Функция для закрытия всех открытых модальных окон
-        function closeAllModals() {
-            const openModals = document.querySelectorAll('.modal.show');
-            openModals.forEach(modal => {
-                const modalInstance = bootstrap.Modal.getInstance(modal);
-                if (modalInstance) modalInstance.hide();
-            });
-        }
-        
-        // Обработчик для кнопок открытия модальных окон
-        document.addEventListener('click', function(e) {
-            const modalTrigger = e.target.closest('[data-bs-toggle="modal"]');
-            
-            if (modalTrigger) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Закрываем все открытые модальные окна
-                closeAllModals();
-                
-                // Очищаем все backdrop элементы
-                clearBackdrops();
-                
-                // Получаем целевое модальное окно
-                const targetModalId = modalTrigger.getAttribute('data-bs-target');
-                const targetModal = document.querySelector(targetModalId);
-                
-                if (targetModal) {
-                    // Создаем новый экземпляр модального окна
-                    const modalInstance = new bootstrap.Modal(targetModal, {
-                        backdrop: 'static',
-                        keyboard: false
-                    });
-                    
-                    // Показываем модальное окно
-                    modalInstance.show();
-                    
-                    // Устанавливаем правильный z-index
-                    setTimeout(() => {
-                        targetModal.style.zIndex = '1055';
-                        const backdrop = document.querySelector('.modal-backdrop');
-                        if (backdrop) {
-                            backdrop.style.zIndex = '1050';
-                        }
-                    }, 10);
-                }
-            }
-        });
-        
-        // Обработчик для кнопок закрытия модальных окон
-        document.addEventListener('click', function(e) {
-            const closeButton = e.target.closest('[data-bs-dismiss="modal"]');
-            
-            if (closeButton) {
-                const modal = closeButton.closest('.modal');
-                if (modal) {
-                    const modalInstance = bootstrap.Modal.getInstance(modal);
-                    if (modalInstance) modalInstance.hide();
-                    
-                    // Очищаем backdrop после закрытия
-                    setTimeout(() => {
-                        clearBackdrops();
-                        document.body.classList.remove('modal-open');
-                        document.body.style.overflow = '';
-                        document.body.style.paddingRight = '';
-                    }, 150);
-                }
-            }
-        });
-        
-        // Обработчик события закрытия модального окна
-        document.addEventListener('hidden.bs.modal', function(e) {
-            clearBackdrops();
-            document.body.classList.remove('modal-open');
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
-        });
-    });
-    </script>
-
     <style>
+    /* Закрепление футера внизу */
     body {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        margin: 0;
+        padding: 0;
     }
+    
     main {
         flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
     
-    /* Исправление проблем с модальными окнами */
-    .modal {
-        z-index: 1055 !important;
+    .container-fluid {
+        flex: 1;
     }
     
-    .modal-backdrop {
-        z-index: 1050 !important;
-        opacity: 0.5 !important;
+    /* Система выпадающих блоков вместо модальных окон */
+    .dropdown-block {
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
     }
     
-    /* Предотвращение мерцания */
-    .modal.fade .modal-dialog {
-        transition: transform 0.15s ease-out;
-        transform: translate(0, -50px);
+    .dropdown-block:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
     
-    .modal.show .modal-dialog {
-        transform: translate(0, 0);
+    .dropdown-header {
+        background-color: #f8f9fa;
+        padding: 15px 20px;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: #333;
+        transition: background-color 0.3s ease;
+        position: relative;
     }
     
-    /* Улучшение производительности */
-    .modal,
-    .modal-dialog,
-    .modal-content {
-        will-change: auto;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
+    .dropdown-header:hover {
+        background-color: #e9ecef;
     }
     
-    /* Исправление проблем с прокруткой */
-    body.modal-open {
-        overflow: hidden !important;
-        padding-right: 0 !important;
+    .dropdown-header::after {
+        content: '▼';
+        font-size: 12px;
+        transition: transform 0.3s ease;
+        color: #666;
     }
-</style>
+    
+    .dropdown-header.active::after {
+        transform: rotate(180deg);
+    }
+    
+    .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background-color: white;
+    }
+    
+    .dropdown-content.show {
+        max-height: 1000px;
+    }
+    
+    .dropdown-body {
+        padding: 20px;
+        border-top: 1px solid #dee2e6;
+    }
+    
+    .dropdown-footer {
+        padding: 15px 20px;
+        border-top: 1px solid #dee2e6;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+    
+    .dropdown-title {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    /* Стили для кнопок в выпадающих блоках */
+    .dropdown-btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .dropdown-btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+    
+    .dropdown-btn-primary:hover {
+        background-color: #0056b3;
+        transform: translateY(-1px);
+    }
+    
+    .dropdown-btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+    
+    .dropdown-btn-secondary:hover {
+        background-color: #545b62;
+        transform: translateY(-1px);
+    }
+    
+    .dropdown-btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+    
+    .dropdown-btn-danger:hover {
+        background-color: #c82333;
+        transform: translateY(-1px);
+    }
+    
+    .dropdown-btn-warning {
+        background-color: #ffc107;
+        color: #212529;
+    }
+    
+    .dropdown-btn-warning:hover {
+        background-color: #e0a800;
+        transform: translateY(-1px);
+    }
+    
+    /* Стили для кнопки переключения */
+    .dropdown-toggle-btn {
+        transition: all 0.2s ease;
+    }
+    
+    .dropdown-toggle-btn:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Стили для таблиц в выпадающих блоках */
+    .dropdown-block .table {
+        width: 100%;
+        margin-bottom: 0;
+        border-collapse: collapse;
+    }
+    
+    .dropdown-block .table th,
+    .dropdown-block .table td {
+        padding: 12px;
+        border-bottom: 1px solid #dee2e6;
+        text-align: left;
+    }
+    
+    .dropdown-block .table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        color: #495057;
+    }
+    
+    /* Стили для форм в выпадающих блоках */
+    .dropdown-block .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .dropdown-block .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #495057;
+    }
+    
+    .dropdown-block .form-control {
+        width: 100%;
+        padding: 10px 12px;
+        border: 2px solid #ced4da;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.2s ease;
+        box-sizing: border-box;
+    }
+    
+    .dropdown-block .form-control:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+    
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .dropdown-header,
+        .dropdown-body,
+        .dropdown-footer {
+            padding: 15px;
+        }
+        
+        .dropdown-title {
+            font-size: 1rem;
+        }
+        
+        .dropdown-footer {
+            flex-direction: column;
+        }
+        
+        .dropdown-btn {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    }
+    </style>
+    
+    <script>
+    // Система выпадающих блоков
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Dropdown blocks system loaded');
+        
+        // Функция для переключения выпадающего блока
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+            
+            // Закрываем все другие блоки
+            document.querySelectorAll('.dropdown-header.active').forEach(h => {
+                if (h !== header) {
+                    h.classList.remove('active');
+                    h.nextElementSibling.classList.remove('show');
+                }
+            });
+            
+            // Переключаем текущий блок
+            if (isActive) {
+                header.classList.remove('active');
+                content.classList.remove('show');
+            } else {
+                header.classList.add('active');
+                content.classList.add('show');
+            }
+        }
+        
+        // Обработчик клика по заголовкам выпадающих блоков
+        document.addEventListener('click', function(e) {
+            const header = e.target.closest('.dropdown-header');
+            if (header) {
+                e.preventDefault();
+                toggleDropdown(header);
+            }
+        });
+        
+        // Обработчик клика по кнопкам переключения (глазок)
+        document.addEventListener('click', function(e) {
+            const toggleBtn = e.target.closest('.dropdown-toggle-btn');
+            if (toggleBtn) {
+                e.preventDefault();
+                const targetId = toggleBtn.getAttribute('data-target');
+                const targetBlock = document.getElementById(targetId);
+                if (targetBlock) {
+                    const header = targetBlock.querySelector('.dropdown-header');
+                    if (header) {
+                        toggleDropdown(header);
+                    }
+                }
+            }
+        });
+        
+        // Обработчик клика по кнопкам закрытия
+        document.addEventListener('click', function(e) {
+            const closeBtn = e.target.closest('.close-dropdown');
+            if (closeBtn) {
+                e.preventDefault();
+                const dropdownBlock = closeBtn.closest('.dropdown-block');
+                if (dropdownBlock) {
+                    const header = dropdownBlock.querySelector('.dropdown-header');
+                    if (header) {
+                        header.classList.remove('active');
+                        header.nextElementSibling.classList.remove('show');
+                    }
+                }
+            }
+        });
+        
+        // Обработчик клавиши Enter для доступности
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const header = e.target.closest('.dropdown-header');
+                if (header) {
+                    e.preventDefault();
+                    toggleDropdown(header);
+                }
+            }
+        });
+    });
+    </script>
 </body>
 </html>

@@ -49,7 +49,7 @@
                                 </form>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal{{ msg.id }}">
+                                <button type="button" class="btn btn-sm btn-info dropdown-toggle-btn" data-target="detailBlock{{ msg.id }}">
                                     <i class="bi bi-eye"></i>
                                 </button>
                                 <form action="/admin/feedback/{{ msg.id }}/delete" method="POST" class="d-inline">
@@ -60,48 +60,49 @@
                             </td>
                         </tr>
 
-                        <!-- Модальное окно с деталями заявки -->
-                        <div class="modal fade" id="detailModal{{ msg.id }}" tabindex="-1" aria-labelledby="detailModalLabel{{ msg.id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="detailModalLabel{{ msg.id }}">Детали заявки #{{ msg.id }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <p><strong>Имя:</strong> {{ msg.name }}</p>
-                                                <p><strong>Email:</strong> {{ msg.email }}</p>
-                                                <p><strong>Дата подачи:</strong> {{ msg.created_at }}</p>
+                        <!-- Выпадающий блок с деталями заявки -->
+                        <tr>
+                            <td colspan="6" class="p-0">
+                                <div class="dropdown-block" id="detailBlock{{ msg.id }}">
+                                    <button class="dropdown-header">
+                                        <span class="dropdown-title">Детали заявки #{{ msg.id }}</span>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p><strong>Имя:</strong> {{ msg.name }}</p>
+                                                    <p><strong>Email:</strong> {{ msg.email }}</p>
+                                                    <p><strong>Дата подачи:</strong> {{ msg.created_at }}</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p><strong>Статус:</strong> 
+                                                        <span class="badge bg-{{ {
+                                                            'Новая': 'primary',
+                                                            'В обработке': 'warning',
+                                                            'Выполнено': 'success',
+                                                            'Отклонено': 'danger'
+                                                        }.get(msg.status, 'secondary') }}">
+                                                            {{ msg.status }}
+                                                        </span>
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p><strong>Статус:</strong> 
-                                                    <span class="badge bg-{{ {
-                                                        'Новая': 'primary',
-                                                        'В обработке': 'warning',
-                                                        'Выполнено': 'success',
-                                                        'Отклонено': 'danger'
-                                                    }.get(msg.status, 'secondary') }}">
-                                                        {{ msg.status }}
-                                                    </span>
-                                                </p>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h6>Сообщение:</h6>
+                                                    <p>{{ msg.message }}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h6>Сообщение:</h6>
-                                                <p>{{ msg.message }}</p>
-                                            </div>
+                                        <div class="dropdown-footer">
+                                            <button type="button" class="dropdown-btn dropdown-btn-secondary close-dropdown">Закрыть</button>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </td>
+                        </tr>
                         {% endfor %}
                     </tbody>
                 </table>
