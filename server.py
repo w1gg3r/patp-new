@@ -251,4 +251,6 @@ def about_company():
     return render_template('about-us/about-company.html', latest_news=g.latest_news)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))  # Используем PORT от Render, по умолчанию 5000
+    app.run(host='0.0.0.0', port=port)
