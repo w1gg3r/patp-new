@@ -151,39 +151,44 @@
         <!-- Заголовок и навигация -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="text-left mb-0">Новости</h2>
-            <!-- Кнопки навигации -->
-            <div class="news-controls d-none d-md-flex gap-2">
-                <button class="btn btn-outline-primary btn-sm" id="news-prev"><i class="bi bi-arrow-left"></i></button>
-                <button class="btn btn-outline-primary btn-sm" id="news-next"><i class="bi bi-arrow-right"></i></button>
+            
+            <!-- Кнопки навигации слайдера рядом с заголовком -->
+            <div class="d-flex gap-2">
+                <div class="swiper-button-prev custom-swiper-button" id="news-prev">
+                    <i class="bi bi-chevron-left"></i>
+                </div>
+                <div class="swiper-button-next custom-swiper-button" id="news-next">
+                    <i class="bi bi-chevron-right"></i>
+                </div>
             </div>
         </div>
 
-        <!-- Слайдер -->
-        <div class="swiper mySwiper">
+        {% if news and news|length > 0 %}
+        <!-- Слайдер с активным центральным слайдом -->
+        <div class="swiper-container mySwiper">
             <div class="swiper-wrapper">
                 {% for post in news %}
                 <div class="swiper-slide">
-                    <div class="card h-100 border-0 shadow-sm position-relative">
-                        <!-- Дата в углу -->
-                        <small class="card-date text-white bg-primary px-2 py-1 rounded-end">{{ post.created_at[:10] }}</small>
+                    <div class="card h-100 border-0">
+                        <div class="card-img-wrapper">
+                            {% if post.image %}
+                            <img src="{{ url_for('static', filename='images/' + post.image) }}" 
+                                 class="card-img-top"
+                                 alt="{{ post.title }}"
+                                 style="height: 200px; object-fit: cover;">
+                            {% else %}
+                            <img src="{{ url_for('static', filename='images/placeholder.png') }}"
+                                 class="card-img-top"
+                                 alt="{{ post.title }}"
+                                 style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            <div class="date-badge">{{ post.created_at[:10] }}</div>
+                        </div>
                         
-                        <!-- Изображение -->
-                        <img src="{{ url_for('static', filename='images/' + (post.image or 'placeholder.png')) }}" 
-                             class="card-img-top" 
-                             alt="{{ post.title }}"
-                             style="height: 200px; object-fit: cover;">
-                        
-                        <!-- Контент -->
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title mt-2">{{ post.title }}</h5>
-                            
-                            <!-- Описание с ограничением строк -->
-                            <p class="card-text text-truncate-2 mb-3">
-                                {{ post.content }}
-                            </p>
-                            
-                            <!-- Кнопка -->
-                            <a href="/news/{{ post.id }}" class="btn btn-outline-primary btn-sm mt-auto">Читать далее →</a>
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="card-text flex-grow-1">{{ post.content[:100] }}...</p>
+                            <a href="/news/{{ post.id }}" class="btn btn-primary btn-sm mt-2">Читать далее</a>
                         </div>
                     </div>
                 </div>
@@ -191,8 +196,13 @@
             </div>
             
             <!-- Пагинация -->
-            <div class="swiper-pagination mt-4"></div>
+            <div class="swiper-pagination"></div>
         </div>
+        {% else %}
+        <div class="alert alert-info">
+            <p>Новости скоро появятся. Следите за обновлениями!</p>
+        </div>
+        {% endif %}
     </div>
 </section>
 
@@ -205,7 +215,7 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="name" class="form-label">Имя*</label>
-                        <input type="text" id="name" name="name" placeholder="Иван Иванов" class="form-control" required>
+                        <input type="text" id="name" name="name" placeholder="Иван" class="form-control" required>
                     </div>
                     <div class="col-md-6">
                         <label for="email" class="form-label">Email*</label>
@@ -225,8 +235,11 @@
                     </div>
                     <div class="col-12 form-check mt-3">
                         <input class="form-check-input" type="checkbox" id="privacy-check" name="consent" required>
-                        <label class="form-check-label text-muted" for="privacy-check">
-                            Соглашаюсь c условиями <a href="/uploads/mupatp_politic.pdf" target="_blank" class="text-decoration-underline">политики конфиденциальности</a>
+                        <label class="form-check-label text-muted" for="consent">
+                            Я согласен(а) на обработку персональных данных
+                            <a href="{{ url_for('static', filename='uploads/mupatp_politic.pdf') }}" target="_blank" class="text-decoration-underline">
+                                политике конфиденциальности
+                            </a>
                         </label>
                     </div>
                     <div class="col-12 text-start mt-3">
@@ -237,4 +250,31 @@
         </div>
     </section>
 </main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Отображаем отладочную информацию
+        const debugInfo = document.getElementById('debug-info');
+        if (debugInfo) {
+            debugInfo.style.display = 'block';
+        }
+        
+        // Проверяем наличие элемента слайдера
+        const swiperEl = document.querySelector('.mySwiper');
+        console.log('Swiper element exists:', !!swiperEl);
+        
+        // Проверяем количество слайдов
+        if (swiperEl) {
+            const slides = swiperEl.querySelectorAll('.swiper-slide');
+            console.log('Number of slides:', slides.length);
+            
+            // Выводим информацию о каждом слайде
+            slides.forEach((slide, index) => {
+                console.log(`Slide ${index} content:`, slide.innerHTML.substring(0, 100) + '...');
+            });
+        }
+    });
+</script>
 {% endblock %}

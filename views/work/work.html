@@ -1,0 +1,303 @@
+{% extends "base.html" %}
+{% block title %}Работа у нас — ПАТП №1 Вологда{% endblock %}
+
+{% block content %}
+<div class="service-holder">
+    <h1 class="mb-5">Работа у нас</h1>
+    <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Работа у нас</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container py-4">
+    <!-- Основная информация -->
+    <section class="mb-5">
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <p class="mb-4">
+                    АО «ПАТП №1» - это надежное и стабильное предприятие с большой историей, уверенным настоящим и
+                    ясным будущим. В крепкий и сплоченный трудовой коллектив ПАТП № 1 сегодня входит порядка 500
+                    человек. Это водители, слесари, кондукторы, диспетчеры, медики, административный персонал.
+                    Многие из работников имеют стаж работы на предприятии более 20 лет. И все без исключения наши
+                    сотрудники - настоящие мастера своего дела!
+                </p>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body-work">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-mortarboard-fill text-primary me-2 fs-3"></i>
+                                    <h2 class="h4 mb-0">Обучение</h2>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        <a href="https://yc.mupatp1.ru" target="_blank" class="text-decoration-none">Обучение на водителя автобуса</a>
+                                    </li>
+                                    <li class="list-group-item bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        <a href="{{ url_for('static', filename='uploads/') }}" class="text-decoration-none">Обучение на водителя троллейбуса</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body-work">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-briefcase-fill text-primary me-2 fs-3"></i>
+                                    <h2 class="h4 mb-0">Список вакансий</h2>
+                                </div>
+                                <p>
+                                    Двери ПАТП № 1 всегда открыты для всех желающих - как специалистов своего дела, так и для тех,
+                                    кто еще только желает освоить новую, важную и всегда востребованную профессию.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Слайдер с вакансиями -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Актуальные вакансии</h2>
+        <div class="row g-4">
+            <!-- Вакансия 1 -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/driver-maneuver.png') }}" alt="Водитель маневровых работ" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">Водитель маневровых работ - слесарь</h3>
+                        <p class="mb-2">
+                            Наличие Категории «Троллейбус». Сменный график, 2*2, (с 08.00 до 20.00; с 20.00
+                            до 08.00).
+                        </p>
+                        <p class="mb-2">
+                            Оформление по ТК РФ, полный соцпакет, доставка на работу и с работы служебным
+                            транспортом, бесплатный проезд по городу.
+                        </p>
+                        <div class="mt-auto">
+                            <div class="mb-2">
+                                <span class="badge bg-success vacancy-badge">от 35 000 ₽</span>
+                            </div>
+                            <a href="/work_order" class="btn btn-primary w-100">
+                                <i class="bi bi-send me-2"></i>Оставить заявку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вакансия 2 -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/trolleybus-driver.png') }}" alt="Водитель троллейбуса" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">Водитель троллейбуса регулярных городских пассажирских маршрутов</h3>
+                        <p class="mb-2">
+                            Оформление по ТК РФ, полный соцпакет, доставка на работу и с работы служебным
+                            транспортом, бесплатный проезд по городу, сменный график, дополнительный отпуск.
+                        </p>
+                        <div class="mt-auto">
+                            <div class="mb-2">
+                                <span class="badge bg-success vacancy-badge">от 82 000 ₽</span>
+                            </div>
+                            <a href="/work_order" class="btn btn-primary w-100">
+                                <i class="bi bi-send me-2"></i>Оставить заявку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вакансия 3 -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/tech-assistance-driver.png') }}" alt="Водитель техпомощи" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">Водитель транспортного средства категорий С, С1, СЕ, С1Е (водитель техпомощи)</h3>
+                        <p class="mb-2">
+                            Оформление по ТК РФ, отпуск 35 дней, полный соцпакет, доставка на работу и с
+                            работы служебным транспортом, бесплатный проезд по городу. Компенсация 5 тыс.
+                            руб. в месяц для иногородних на оплату жилья. 
+                        </p>
+                        <p class="mb-2">
+                            Режим работы сменный 2*2 (с 06.00 до 18.00; с 13.00 до 01.00 часов).
+                            Требования – водительское удостоверение категорий С, С1, СЕ, С1Е.
+                        </p>
+                        <div class="mt-auto">
+                            <div class="mb-2">
+                                <span class="badge bg-success vacancy-badge">от 45 000 ₽</span>
+                            </div>
+                            <a href="/work_order" class="btn btn-primary w-100">
+                                <i class="bi bi-send me-2"></i>Оставить заявку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Карточки с категориями вакансий -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Категории вакансий</h2>
+        <div class="row g-4">
+            <!-- Категория 1 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/tech-helper.jpg') }}" alt="Технические работники" class="img-fluid w-100 h-100 object-fit-cover">
+                        <div class="vacancy-category-overlay"></div>
+                        <div class="position-absolute top-50 start-50 translate-middle text-center">
+                            <h3 class="text-white fw-bold mb-0">Технические работники</h3>
+                        </div>
+                    </div>
+                    <div class="card-body-work">
+                        <p class="mb-4">Мы ищем специалистов для обслуживания и ремонта автобусов.</p>
+                        <div class="mt-auto">
+                            <a href="/work_order" class="btn btn-primary w-100">
+                                <i class="bi bi-send me-2"></i>Оставить заявку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Категория 2 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/driver.jpg') }}" alt="Водители" class="img-fluid w-100 h-100 object-fit-cover">
+                        <div class="vacancy-category-overlay"></div>
+                        <div class="position-absolute top-50 start-50 translate-middle text-center">
+                            <h3 class="text-white fw-bold mb-0">Водители</h3>
+                        </div>
+                    </div>
+                    <div class="card-body-work">
+                        <p class="mb-4">Присоединяйтесь к нашей команде профессиональных водителей.</p>
+                        <div class="mt-auto">
+                            <a href="/work_order" class="btn btn-primary w-100">
+                                <i class="bi bi-send me-2"></i>Оставить заявку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Категория 3 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/administration.jpg') }}" alt="Прочее" class="img-fluid w-100 h-100 object-fit-cover">
+                        <div class="vacancy-category-overlay"></div>
+                        <div class="position-absolute top-50 start-50 translate-middle text-center">
+                            <h3 class="text-white fw-bold mb-0">Прочее</h3>
+                        </div>
+                    </div>
+                    <div class="card-body-work">
+                        <p class="mb-4">Другие вакансии для административного и вспомогательного персонала.</p>
+                        <div class="mt-auto">
+                            <a href="/work_order" class="btn btn-primary w-100">
+                                <i class="bi bi-send me-2"></i>Оставить заявку
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Преимущества работы -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Преимущества работы в ПАТП №1</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="icon-box mb-3">
+                                <i class="bi bi-shield-check fs-2"></i>
+                            </div>
+                            <h3 class="h5 mb-3">Стабильность</h3>
+                            <p>Официальное трудоустройство, своевременная выплата заработной платы, полный социальный пакет</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="icon-box mb-3">
+                                <i class="bi bi-graph-up-arrow fs-2"></i>
+                            </div>
+                            <h3 class="h5 mb-3">Карьерный рост</h3>
+                            <p>Возможность профессионального развития и карьерного роста внутри компании</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="icon-box mb-3">
+                                <i class="bi bi-people fs-2"></i>
+                            </div>
+                            <h3 class="h5 mb-3">Дружный коллектив</h3>
+                            <p>Сплоченный коллектив профессионалов, готовых поделиться опытом и поддержать</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Контактная информация -->
+    <section class="mb-5">
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="row">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-telephone-fill text-primary me-2 fs-4"></i>
+                            <h3 class="h4 mb-0">Контакты отдела кадров</h3>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex bg-transparent">
+                                <i class="bi bi-telephone text-success me-2"></i>
+                                <span>8 (8172) 26-99-92</span>
+                            </li>
+                            <li class="list-group-item d-flex bg-transparent">
+                                <i class="bi bi-envelope text-primary me-2"></i>
+                                <span>hr@mupatp1.ru</span>
+                            </li>
+                            <li class="list-group-item d-flex bg-transparent">
+                                <i class="bi bi-geo-alt text-danger me-2"></i>
+                                <span>г. Вологда, ул. Мудрова, д. 31</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-info mb-0" role="alert">
+                            <div class="d-flex">
+                                <i class="bi bi-info-circle-fill me-2 fs-4"></i>
+                                <div>
+                                    <h4 class="alert-heading">Как подать заявку</h4>
+                                    <p class="mb-0">Вы можете оставить заявку на интересующую вас вакансию через форму на сайте, позвонить по указанным телефонам или отправить резюме на электронную почту.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %} 

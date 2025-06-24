@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+{% block title %}Ваш билет — ПАТП №1 Вологда{% endblock %}
+
+{% block content %}
+<div class="service-holder">
+    <h1 class="mb-5">Ваш билет</h1>
+    <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ваш билет</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container py-4">
+    <!-- Основная информация -->
+    <section class="mb-5">
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <p class="mb-4">
+                    Сервис "Ваш билет" — это удобный способ приобретения билетов на общественный транспорт АО «ПАТП №1» онлайн. Покупайте билеты на автобус, не выходя из дома, и экономьте своё время.
+                </p>
+                <div class="alert alert-primary">
+                    <div class="d-flex">
+                        <i class="bi bi-info-circle-fill me-2 fs-4"></i>
+                        <div>
+                            <h4 class="alert-heading">Удобно и быстро</h4>
+                            <p class="mb-0">Приобретайте билеты онлайн через официальный сайт <a href="https://вашбилет.рф" target="_blank" class="alert-link">вашбилет.рф</a> или мобильное приложение.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Преимущества онлайн-билетов</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-clock fs-1 text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3 text-center">Экономия времени</h3>
+                        <p class="mb-4">Не нужно стоять в очередях в кассу или искать терминалы. Покупайте билеты в любое удобное время.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-phone fs-1 text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3 text-center">Всегда под рукой</h3>
+                        <p class="mb-4">Билеты хранятся в вашем личном кабинете и всегда доступны на вашем мобильном устройстве.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-shield-check fs-1 text-primary"></i>
+                        </div>
+                        <h3 class="h5 mb-3 text-center">Безопасность</h3>
+                        <p class="mb-4">Электронные билеты защищены от подделок и утери. Оплата производится через защищенные каналы.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как это работает -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Как это работает</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <span class="fw-bold">1</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h3 class="h5 mb-2">Регистрация</h3>
+                                        <p>Зарегистрируйтесь на сайте <a href="https://вашбилет.рф" target="_blank">вашбилет.рф</a> или скачайте мобильное приложение.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <span class="fw-bold">2</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h3 class="h5 mb-2">Выбор маршрута</h3>
+                                        <p>Выберите нужный маршрут, дату и время поездки.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <span class="fw-bold">3</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h3 class="h5 mb-2">Оплата</h3>
+                                        <p>Оплатите билет с помощью банковской карты или электронного кошелька.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <span class="fw-bold">4</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h3 class="h5 mb-2">Получение билета</h3>
+                                        <p>Билет будет отправлен на ваш email и доступен в личном кабинете. Просто покажите QR-код при посадке.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-5 mt-4 mt-lg-0">
+                        <div class="text-center">
+                            <img src="{{ url_for('static', filename='images/qr-coder.jpg') }}" alt="QR-код билета" class="img-fluid rounded shadow" style="max-width: 80%;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="https://вашбилет.рф" target="_blank" class="btn btn-primary btn-lg">
+                        <i class="bi bi-ticket-perforated me-2"></i>Купить билет
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Часто задаваемые вопросы -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Часто задаваемые вопросы</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Как вернуть билет?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Для возврата билета необходимо зайти в личный кабинет на сайте <a href="https://вашбилет.рф" target="_blank">вашбилет.рф</a>, найти нужный билет и нажать кнопку "Вернуть". Возврат возможен не позднее чем за 2 часа до отправления. Деньги вернутся на карту, с которой производилась оплата, в течение 3-5 рабочих дней.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Что делать, если не пришел билет на почту?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Проверьте папку "Спам" в вашей почте. Если билет не обнаружен, зайдите в личный кабинет на сайте — там должны отображаться все ваши билеты. Если и там билета нет, но деньги списаны, обратитесь в службу поддержки по телефону +7 (8172) 55-66-70.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Можно ли купить билет на другого человека?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Да, при покупке билета вы можете указать данные другого пассажира. Главное, чтобы у этого человека был при себе документ, удостоверяющий личность, данные которого были указаны при покупке.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Как показать билет при посадке?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                При посадке необходимо показать водителю или кондуктору QR-код билета на экране смартфона. Код можно найти в письме, отправленном на вашу электронную почту, или в личном кабинете на сайте/в приложении. Рекомендуем заранее открыть билет, чтобы не задерживать посадку.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контактная информация -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Техническая поддержка</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <p class="mb-4">
+                            Если у вас возникли вопросы по работе сервиса "Ваш билет" или проблемы с покупкой билетов, обратитесь в нашу службу поддержки:
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-telephone-fill text-primary me-3 fs-5"></i>
+                                <span>+7 (8172) 55-66-70</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-envelope-fill text-primary me-3 fs-5"></i>
+                                <span>support@вашбилет.рф</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-clock-fill text-primary me-3 fs-5"></i>
+                                <span>Ежедневно с 8:00 до 20:00</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="alert alert-info mb-0 h-100 d-flex flex-column justify-content-center">
+                            <div class="d-flex align-items-start">
+                                <i class="bi bi-info-circle-fill me-2 fs-4"></i>
+                                <div>
+                                    <h4 class="alert-heading">Важно!</h4>
+                                    <p class="mb-0">При обращении в службу поддержки, пожалуйста, указывайте номер заказа или билета для более быстрого решения вашего вопроса.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %} 

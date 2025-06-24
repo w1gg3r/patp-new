@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block title %}Оплата проезда — ПАТП №1 Вологда{% endblock %}
+
+{% block content %}
+<div class="service-holder">
+    <h1 class="mb-5">Оплата проезда</h1>
+    <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Оплата проезда</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container py-4">
+    <!-- Основная информация -->
+    <section class="mb-5">
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <p class="mb-4">
+                    АО «ПАТП №1» предлагает пассажирам различные способы оплаты проезда в городском общественном транспорте. Выберите наиболее удобный для вас способ оплаты и экономьте время при поездках.
+                </p>
+                <div class="alert alert-primary">
+                    <div class="d-flex">
+                        <i class="bi bi-info-circle-fill me-2 fs-4"></i>
+                        <div>
+                            <h4 class="alert-heading">Актуальная информация</h4>
+                            <p class="mb-0">Подробную информацию о текущих тарифах и стоимости проезда вы можете найти на странице <a href="/price" class="alert-link">Стоимость проезда</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Способы оплаты -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Доступные способы оплаты</h2>
+        <div class="row g-4">
+            <!-- Банковская карта -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/bank-card.jpg') }}" alt="Банковская карта" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">Банковской картой</h3>
+                        <p class="mb-4">Принимаются к оплате карты Visa, MasterCard, МИР и другие. Терминалы установлены во всех автобусах.</p>
+                        <div class="mt-auto">
+                            <a href="https://bilet.nspk.ru" target="_blank" class="btn btn-outline-primary w-100">
+                                Подробнее <i class="bi bi-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Электронная Вологда -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/e-vologda.jpeg') }}" alt="Электронная Вологда" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">Электронная Вологда</h3>
+                        <p class="mb-4">Сервис для безналичной оплаты проезда через мобильное приложение.</p>
+                        <div class="mt-auto">
+                            <a href="https://e-vologda.com" target="_blank" class="btn btn-outline-primary w-100">
+                                Подробнее <i class="bi bi-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- История поездок -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/cabinet-history.jpg') }}" alt="История поездок" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">История поездок</h3>
+                        <p class="mb-4">Отслеживайте историю поездок и получите информацию о ваших поездках онлайн.</p>
+                        <div class="mt-auto">
+                            <a href="https://t-karta.ru" target="_blank" class="btn btn-outline-primary w-100">
+                                Подробнее <i class="bi bi-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- QR-код -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/qr-coder.jpg') }}" alt="QR-код" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">Онлайн-билет (QR-код)</h3>
+                        <p class="mb-4">Купите билет онлайн и покажите QR-код водителю на входе.</p>
+                        <div class="mt-auto">
+                            <a href="https://xn--80acboos4c2b.xn--p1ai/" class="btn btn-outline-primary w-100">
+                                Подробнее <i class="bi bi-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Дополнительная информация -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Дополнительная информация</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <p class="mb-4">
+                    Все виды оплаты фиксируются в системе. При необходимости вы можете запросить чек или получить информацию о поездках в личном кабинете.
+                </p>
+                
+                <div class="alert alert-info">
+                    <div class="d-flex">
+                        <i class="bi bi-telephone-fill me-2 fs-4"></i>
+                        <div>
+                            <h4 class="alert-heading">Контакты</h4>
+                            <p class="mb-0">Более подробную информацию об оплате проезда вы можете получить по телефону:</p>
+                            <p class="mb-0 fw-bold">
+                                <a href="tel:+78172556670" class="text-decoration-none">+7 (8172) 55-66-70</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

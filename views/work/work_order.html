@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block title %}Заявка на вакансию — ПАТП №1 Вологда{% endblock %}
+
+{% block content %}
+<div class="service-holder">
+    <h1 class="mb-5">Заявка на вакансию</h1>
+    <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/work">Работа у нас</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Заявка на вакансию</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-docs">
+                    {% if success %}
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Заявка отправлена!</h4>
+                        <p>{{ success }}</p>
+                        <hr>
+                        <p class="mb-0">Мы свяжемся с вами в ближайшее время.</p>
+                    </div>
+                    {% elif error %}
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">Ошибка!</h4>
+                        <p>{{ error }}</p>
+                        <hr>
+                        <p class="mb-0">Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.</p>
+                    </div>
+                    {% endif %}
+
+                    <form action="/submit-work-order" method="POST" class="contact-form" enctype="multipart/form-data">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">ФИО <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telephone" class="form-label">Телефон <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="age" class="form-label">Возраст</label>
+                                <input type="number" class="form-control" id="age" name="age" min="18" max="100">
+                            </div>
+                            <div class="col-12">
+                                <label for="vacancy_type" class="form-label">Интересующая вакансия <span class="text-danger">*</span></label>
+                                <select class="form-select" id="vacancy_type" name="vacancy_type" required>
+                                    <option value="" selected disabled>Выберите вакансию</option>
+                                    <option value="driver_maneuver">Водитель маневровых работ - слесарь</option>
+                                    <option value="trolleybus_driver">Водитель троллейбуса</option>
+                                    <option value="tech_assistance_driver">Водитель техпомощи</option>
+                                    <option value="technical_worker">Технический работник</option>
+                                    <option value="driver">Водитель</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="experience" class="form-label">Опыт работы</label>
+                                <select class="form-select" id="experience" name="experience">
+                                    <option value="no_experience">Нет опыта</option>
+                                    <option value="less_than_1">Менее 1 года</option>
+                                    <option value="1_to_3">От 1 до 3 лет</option>
+                                    <option value="3_to_5">От 3 до 5 лет</option>
+                                    <option value="more_than_5">Более 5 лет</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="education" class="form-label">Образование</label>
+                                <select class="form-select" id="education" name="education">
+                                    <option value="secondary">Среднее</option>
+                                    <option value="specialized_secondary">Среднее специальное</option>
+                                    <option value="incomplete_higher">Неоконченное высшее</option>
+                                    <option value="higher">Высшее</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="driving_license" class="form-label">Водительское удостоверение (категории)</label>
+                                <input type="text" class="form-control" id="driving_license" name="driving_license" placeholder="Например: B, C, D">
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">Дополнительная информация</label>
+                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Укажите любую дополнительную информацию, которая может быть важна"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="resume" class="form-label">Прикрепить резюме</label>
+                                <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx">
+                                <div class="form-text">Допустимые форматы: PDF, DOC, DOCX. Максимальный размер: 5 МБ</div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="consent" name="consent" required>
+                                    <label class="form-check-label" for="consent">
+                                        Я даю согласие на обработку персональных данных <span class="text-danger">*</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-send me-2"></i>Отправить заявку
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контактная информация -->
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-docs">
+                    <div class="row">
+                        <div class="col-md-6 mb-4 mb-md-0">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-telephone-fill text-primary me-2 fs-4"></i>
+                                <h3 class="h4 mb-0">Контакты отдела кадров</h3>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex bg-transparent">
+                                    <i class="bi bi-telephone text-success me-2"></i>
+                                    <span>8 (8172) 26-99-92</span>
+                                </li>
+                                <li class="list-group-item d-flex bg-transparent">
+                                    <i class="bi bi-envelope text-primary me-2"></i>
+                                    <span>hr@mupatp1.ru</span>
+                                </li>
+                                <li class="list-group-item d-flex bg-transparent">
+                                    <i class="bi bi-clock text-warning me-2"></i>
+                                    <span>Пн-Пт: 8:00-17:00, обед 12:00-13:00</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-info mb-0" role="alert">
+                                <div class="d-flex">
+                                    <i class="bi bi-info-circle-fill me-2 fs-4"></i>
+                                    <div>
+                                        <h4 class="alert-heading">Важная информация</h4>
+                                        <p class="mb-0">После отправки заявки наш специалист свяжется с вами для уточнения деталей и назначения собеседования.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

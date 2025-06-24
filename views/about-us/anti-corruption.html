@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Противодействие коррупции — ПАТП №1 Вологда{% endblock %}
+
+{% block content %}
+<div class="service-holder">
+    <h1 class="mb-5">Противодействие коррупции</h1>
+    <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/about">О компании</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Противодействие коррупции</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container py-4">
+    <!-- Телефон доверия -->
+    <section class="mb-5">
+        <div class="card shadow-sm mb-4">
+            <div class="card-docs">
+                <h2 class="h3 mb-4">Телефон доверия</h2>
+                <p class="card-text">
+                    В АО «ПАТП №1» создан телефон доверия по вопросам противодействия мошенничеству, коррупции и хищениям.
+                    Если вы располагаете информацией по указанным вопросам, вы можете сообщить ее следующими способами:
+                </p>
+                <ul class="list-group list-group-flush mt-3 mb-3">
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-telephone-fill text-primary me-2"></i> Позвонив по телефону: <strong>+7963 356 2550</strong> (отдел по безопасности)
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <i class="bi bi-envelope-fill text-primary me-2"></i> Отправив сообщение на адрес электронной почты: <a href="mailto:mshinykov@mupatp1.ru"> mshinykov@mupatp1.ru</a>
+                    </li>
+                </ul>
+                
+                <p class="card-text mt-4">
+                    Обращаем ваше внимание, что для корректной оценки поступающей информации в сообщении важно отразить следующие вопросы:
+                </p>
+                
+                <div class="card bg-light border-0 mb-4">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent border-0 d-flex">
+                                <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+                                <span>Время, место совершения событий, описанных в сообщении</span>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 d-flex">
+                                <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+                                <span>Фамилию, имя, отчество и должность лица, совершившего мошеннические либо коррупционные действия</span>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 d-flex">
+                                <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+                                <span>Описание событий, относящихся к предполагаемому нарушению</span>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 d-flex">
+                                <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+                                <span>Ущерб, вызванный событиями, изложенными в сообщении</span>
+                            </li>
+                            <li class="list-group-item bg-transparent border-0 d-flex">
+                                <i class="bi bi-check-circle-fill text-primary me-2 mt-1"></i>
+                                <span>Иные сведения по существу содержащейся в сообщении информации</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    Анонимная информация принимается к обработке, если содержит конкретные сведения о фактах либо признаках мошенничества, проявлений коррупции, хищений, иных преступных посягательств на имущество АО «ПАТП №1», его деловую репутацию.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Документы -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Документы</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-docs">
+                        <h3 class="card-title">Положение об оценке коррупционных рисков</h3>
+                        <a href="/static/uploads/" class="btn btn-primary mt-2">Скачать документ</a>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mb-4">
+                    <div class="card-docs">
+                        <h3 class="card-title">Положение об антикоррупционной политике</h3>
+                        <a href="/static/uploads/" class="btn btn-primary mt-2">Скачать документ</a>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mb-4">
+                    <div class="card-docs">
+                        <h3 class="card-title">План противодействия коррупции</h3>
+                        <a href="/static/uploads/" class="btn btn-primary mt-2">Скачать документ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %} 

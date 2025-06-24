@@ -4,11 +4,50 @@
 <div class="py-4">
     <h2 class="mb-4">Добро пожаловать в админ-панель</h2>
 
-    <!-- Меню -->
-        <div class="card-body">
-            <a href="/admin/news" class="btn btn-outline-primary">Управление новостями</a>
-            <a href="/admin/feedback" class="btn btn-outline-primary">Просмотреть заявки</a>
-            <a href="/admin/orders" class="btn btn-outline-primary">Заказы на услуги</a>
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-newspaper fs-1 text-primary mb-3"></i>
+                    <h5 class="card-title">Управление новостями</h5>
+                    <p class="card-text">Управление новостями сайта</p>
+                    <a href="/admin/news" class="btn btn-primary">Перейти</a>
+                </div>
+            </div>
         </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-chat-dots fs-1 text-primary mb-3"></i>
+                    <h5 class="card-title">Заявки обратной связи</h5>
+                    <p class="card-text">Просмотр и обработка заявок</p>
+                    <a href="/admin/feedback" class="btn btn-primary">Перейти</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-cart fs-1 text-primary mb-3"></i>
+                    <h5 class="card-title">Заказы услуг</h5>
+                    <p class="card-text">Управление заказами услуг</p>
+                    <a href="/admin/orders" class="btn btn-primary">Перейти</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-person-workspace fs-1 text-primary mb-3"></i>
+                    <h5 class="card-title">Заявки на вакансии</h5>
+                    <p class="card-text">Просмотр заявок на вакансии</p>
+                    <a href="/admin/work-applications" class="btn btn-primary">Перейти</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

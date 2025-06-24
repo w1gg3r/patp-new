@@ -21,6 +21,11 @@ h1 {
     font-weight: 700;
 }
 
+textarea {
+    resize: none;
+}
+
+
 h2 {
     font-size: 40px;
     font-family: "Comfortaa", serif;
@@ -82,55 +87,35 @@ h2 {
 
 /* === Плавное появление dropdown === */
 .dropdown-menu {
+    display: block;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    display: block !important;
-    max-height: 0;
+    max-height: 300px;
     overflow: hidden;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    padding: 10px;
+    z-index: 1050;
+    pointer-events: none;
 }
 
-.dropdown:hover .dropdown-menu,
-.dropdown.show .dropdown-menu {
+.dropdown-menu.show {
+    display: block;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    max-height: 300px;
-    transition: all 0.5s ease;
-    margin-top: 8px;
+    transition: all 0.3s ease;
+    pointer-events: auto;
 }
 
 /* === Эффект при наведении на пункт меню === */
 .dropdown-item {
-    transition: background-color 0.5s ease, padding-left 0.5s ease;
+    color: #0056b3;
+    transition: all 0.3s ease;
 }
 
-.dropdown-item:hover {
+.dropdown-item:hover {  
     background-color: #f1f1f1;
     padding-left: 20px;
-}
-
-/* === Кнопки рядом со слайдером === */
-.news-controls .btn,
-.col-md-2 .btn {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    font-size: 1.2rem;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    background-color: #fff;
-    border: 2px solid #007BFF;
-    color: #007BFF;
-    z-index: 1;
 }
 
 .news-controls .btn:hover,
@@ -140,12 +125,29 @@ h2 {
     transform: scale(1.1);
 }
 
+/* === Стили для навигации === */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.nav-item.dropdown .dropdown-toggle::after {
+    transition: transform 0.3s ease;
+}
+
+.nav-item.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
 /* === Преимущества === */
 .advantages {
     background-color: #f8f9fa;
 }
 
 .advantage-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: white;
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -240,6 +242,12 @@ h2 {
     margin-bottom: 0.5rem;
 }
 
+.form-check-label {
+    margin-top: .25em !important;
+    padding-bottom: 0px !important;
+    margin-left: 10px;
+}
+
 .contact-form .form-control:focus {
     border-color: #007BFF;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
@@ -292,7 +300,6 @@ input {
 .card {
     display: flex;
     flex-direction: column;
-    height: 100%;
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -351,30 +358,183 @@ input {
     flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
-/* === Swiper стили === */
+/* === Карточка новости === */
+.card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.date-badge {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    background-color: #007BFF;
+    color: white;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* Эффект наведения на изображение */
+.card-img-wrapper img {
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+/* Активный слайд с дополнительными эффектами */
+.swiper-slide-active .date-badge, 
+.swiper-slide-active-center .date-badge {
+    background-color: #0056b3;
+    box-shadow: 0 2px 8px rgba(0, 86, 179, 0.4);
+}
+
+.swiper-slide-active .card-title, 
+.swiper-slide-active-center .card-title {
+    color: #0056b3;
+}
+
+/* Стили для контейнера слайдера */
+.swiper-container {
+    overflow: hidden;
+    position: relative;
+    padding: 30px 0;
+}
+
+/* Дополнительная анимация для карточек */
+.card {
+    transition: all 0.3s ease;
+}
+
+.swiper-slide-active .card, 
+.swiper-slide-active-center .card {
+    transform: translateY(-10px);
+}
+
+/* Кнопка в карточке */
+.card .btn-primary {
+    transition: all 0.3s ease;
+    background-color: transparent;
+    color: #007BFF;
+    border: 1px solid #007BFF;
+}
+
+.card:hover .btn-primary, 
+.swiper-slide-active .btn-primary, 
+.swiper-slide-active-center .btn-primary {
+    background-color: #007BFF;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* === Swiper слайдер (упрощенный) === */
 .swiper {
     width: 100%;
-    padding-top: 30px;
-    padding-bottom: 90px;
-} 
+    padding: 30px 0;
+    overflow: visible !important;
+}
 
 .swiper-slide {
-    text-align: center;
-    font-size: 18px;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: auto;
+    opacity: 0.7;
+    transform: scale(0.85);
+    transition: all 0.3s ease;
+}
+
+/* Активный слайд */
+.swiper-slide-active, .swiper-slide-active-center {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+    z-index: 10;
+}
+
+/* Дополнительный эффект для активного слайда */
+.swiper-slide-active .card, .swiper-slide-active-center .card {
+    border: 2px solid #007BFF;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #007BFF;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+    background: #007BFF;
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.card {
+    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Эффект для кнопки на активном слайде */
+.swiper-slide-active .btn-primary, .swiper-slide-active-center .btn-primary {
+    background-color: #007BFF;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* === Слайдер новостей === */
+.swiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    overflow: visible !important;
+}
+
+.swiper-slide {
+    width: 300px;
+    height: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 400px;
-    min-height: 400px;
+    overflow: hidden;
+}
+
+.swiper-slide.swiper-slide-active {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 2;
 }
 
 .swiper-slide img {
@@ -382,25 +542,73 @@ input {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transition: transform 0.3s ease;
 }
 
 .swiper-slide:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-.swiper-slide-center,
-.swiper-slide.active-center {
+.active-center, 
+.swiper-slide-active {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.active-center img,
+.swiper-slide-active img {
+    border-bottom: 3px solid #007BFF;
+}
+
+/* Кнопки навигации */
+.news-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.news-controls .btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.news-controls .btn:hover {
+    background-color: #007BFF;
+    color: white;
     transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Стили для пагинации */
+.swiper-pagination {
+    position: relative;
+    margin-top: 20px;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: #007BFF;
+}
+
+/* Карточка новости */
+.card-date {
+    position: absolute;
+    top: 10px;
+    left: 0;
     z-index: 10;
-}
-
-.swiper-slide-center img,
-.swiper-slide.active-center img {
-    transform: scale(1.1);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    font-size: 0.75rem;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* === Для карточек в футере === */
@@ -666,11 +874,6 @@ input {
     margin-left: 200px;
 }
 
-.list-group {
-    padding: 10px;
-    gap: 10px;
-    border-radius: 10px;
-}
 
 .list-group-item {
     height: 100%;
@@ -777,4 +980,234 @@ input {
 .table-responsive {
     width: 100%;
     padding: 10px;
+}
+
+/* === Стили для документов === */
+.card-docs {
+    padding: 1.5rem;
+    border-left: 4px solid #007BFF;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.card-docs .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0056b3;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.card-docs .btn-primary {
+    transition: transform 0.3s ease;
+}
+
+.card-docs .btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.card:hover .card-docs {
+    background-color: #f8f9fa;
+}
+
+.card:hover .card-docs .card-title {
+    color: #007BFF;
+}
+
+.card-docs .list-group-item {
+    background-color: transparent;
+    border-color: #e9ecef;
+    padding: 0.75rem 0;
+}
+
+.card-docs .list-group-item i {
+    font-size: 1.1rem;
+}
+
+/* === Стили для страницы противодействия коррупции === */
+.alert-info {
+    background-color: #e8f4ff;
+    border-color: #b8daff;
+    color: #004085;
+}
+
+.alert-info i {
+    color: #0056b3;
+}
+
+.bg-light .list-group-item {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.bg-light .list-group-item i {
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+/* === Стили для страницы автопарка === */
+.bus-info {
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.bus-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.bus-image img:hover {
+    transform: scale(1.02);
+}
+
+.bus-details h3 {
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.bus-details .list-group-item {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 15px;
+    border-left: none;
+    border-right: none;
+}
+
+.bus-details .list-group-item strong {
+    color: #0056b3;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.bus-details .list-group-item span {
+    text-align: justify;
+}
+
+.card-docs-info {
+    padding: 1.5rem;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .bus-details .list-group-item strong {
+        min-width: 180px;
+        margin-bottom: 0;
+    }
+}
+
+
+/* === Стили для страницы вакансий === */
+.card-body-work {
+    padding: 1.25rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 0 0 0.375rem 0.375rem;
+    transition: all 0.3s ease;
+}
+
+.card-body-work h3 {
+    color: #0056b3;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.card-body-work p {
+    color: #555;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.card:hover .card-body-work {
+    background-color: #f8f9fa;
+}
+
+.vacancy-badge {
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+}
+
+.vacancy-category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+    transition: all 0.3s ease;
+}
+
+.card:hover .vacancy-category-overlay {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+}
+
+/* === Кнопки навигации для слайдера === */
+.custom-swiper-button {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+.custom-swiper-button:after {
+    display: none;
+}
+
+.custom-swiper-button i {
+    font-size: 20px;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.custom-swiper-button:hover {
+    background-color: #007BFF;
+    transform: scale(1.1);
+}
+
+.custom-swiper-button:hover i {
+    color: white;
+}
+
+.custom-swiper-button.button-hover {
+    background-color: #007BFF;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+}
+
+.custom-swiper-button.button-hover i {
+    color: white;
+}
+
+/* Улучшение отображения заголовка и кнопок на мобильных устройствах */
+@media (max-width: 576px) {
+    .news h2 {
+        font-size: 24px;
+    }
+    
+    .custom-swiper-button {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .custom-swiper-button i {
+        font-size: 16px;
+    }
 }

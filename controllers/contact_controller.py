@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, flash
+from flask import Blueprint, request, redirect, url_for, flash, g, render_template
 from config.database import get_db_connection
 
 contact_bp = Blueprint('contact', __name__)
@@ -32,3 +32,11 @@ def submit_feedback():
         conn.close()
         flash('error', f'Ошибка при отправке заявки: {str(e)}')
         return redirect(url_for('index'))
+
+@contact_bp.route('/contact')
+def contact_page():
+    return render_template('contact.html', latest_news=g.latest_news)
+
+@contact_bp.route('/service_order')
+def service_order_page():
+    return render_template('service_order.html', latest_news=g.latest_news)

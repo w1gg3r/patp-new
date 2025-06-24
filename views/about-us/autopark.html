@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %}Автопарк — ПАТП №1 Вологда{% endblock %}
+
+{% block content %}
+<div class="service-holder">
+    <h1 class="mb-5">Автопарк</h1>
+    <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/about">О компании</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Автопарк</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container py-4">
+    <!-- Основная информация -->
+    <section class="mb-5">
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <p class="mb-3">
+                    Парк АО "ПАТП № 1" насчитывает порядка 150 машин как отечественного, так и зарубежного производства.
+                    Они подходят для самых разных транспортных задач. Все автобусы предприятия оборудованы кондиционерами,
+                    ремнями безопасности, тахографами и навигационной системой ГЛОНАСС, которая позволяет четко отслеживать маршрут движения автобусов и контролировать регулярность движения.
+                </p>
+                <p class="mb-3">
+                    Для улучшения качества обслуживания и обеспечения транспортной доступности маломобильных граждан,
+                    предприятие приобрело ряд низкопольных автобусов, не уступающих европейским аналогам. Они оборудованы
+                    системой книлинга (наклона пола при остановке в сторону дверей), пандусами и специально отведенными
+                    местами для инвалидных колясок.
+                </p>
+                <p class="mb-3">
+                    Для обеспечения высокого уровня технической готовности парка автобусов на ПАТП оборудованы участки по
+                    техническому обслуживанию и ремонту, благодаря чему значительно сокращается время простоя автобуса на ремонте.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Паспорта доступности -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Паспорта доступности транспортных средств</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <p class="mb-3">
+                    Паспорта доступности транспортных средств для пассажиров из числа инвалидов:
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                <a href="{{ url_for('static', filename='uploads/Паспорт-1.pdf') }}" class="text-decoration-none">Паспорт 1</a>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                <a href="{{ url_for('static', filename='uploads/Паспорт-2.pdf') }}" class="text-decoration-none">Паспорт 2</a>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                <a href="{{ url_for('static', filename='uploads/Паспорт-3.pdf') }}" class="text-decoration-none">Паспорт 3</a>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                <a href="{{ url_for('static', filename='uploads/Паспорт-4.pdf') }}" class="text-decoration-none">Паспорт 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                <a href="{{ url_for('static', filename='uploads/Паспорт-5.pdf') }}" class="text-decoration-none">Паспорт 5</a>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                <a href="{{ url_for('static', filename='uploads/Паспорт-6.pdf') }}" class="text-decoration-none">Паспорт 6</a>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                                <a href="{{ url_for('static', filename='uploads/Паспорт-7.pdf') }}" class="text-decoration-none">Паспорт 7</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Выбор модели автобуса -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Модели автобусов</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="mb-4">
+                    <label for="bus-model" class="form-label">Выберите модель автобуса:</label>
+                    <select id="bus-model" name="bus-model" class="form-select">
+                        <option value="">-- Выберите модель --</option>
+                        <option value="liaz-5256">ЛиАЗ-5256</option>
+                        <option value="olimp-4252">Олимп-4252</option>
+                        <option value="olimp-4252.1">Олимп-4252.1</option>
+                        <option value="maz-206067">МАЗ-206067</option>
+                        <option value="liaz-529257">ЛиАЗ-529257</option>
+                        <option value="maz-103465">МАЗ 103465</option>
+                        <option value="maz-103565">МАЗ 103565</option>
+                        <option value="nefaz-5299-30-31">НЕФАЗ – 5299-0000030-31</option>
+                    </select>
+                </div>
+
+                <div class="bus-info" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="bus-image mb-3">
+                                <img src="" alt="" id="bus-image" class="img-fluid rounded shadow-sm">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="bus-details">
+                                <h3 class="h4 mb-3 text-primary" id="bus-name"></h3>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex">
+                                        <strong class="me-2">Описание:</strong> 
+                                        <span id="bus-description"></span>
+                                    </div>
+                                    <div class="list-group-item d-flex">
+                                        <strong class="me-2">Габаритные размеры:</strong> 
+                                        <span id="bus-dimensions"></span>
+                                    </div>
+                                    <div class="list-group-item d-flex">
+                                        <strong class="me-2">Пассажировместимость:</strong> 
+                                        <span id="bus-capacity"></span>
+                                    </div>
+                                    <div class="list-group-item d-flex">
+                                        <strong class="me-2">Максимальная скорость:</strong> 
+                                        <span id="bus-max-speed"></span>
+                                    </div>
+                                    <div class="list-group-item d-flex">
+                                        <strong class="me-2">Назначение:</strong> 
+                                        <span id="bus-purpose"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="{{ url_for('static', filename='js/bus-selector.js') }}"></script>
+{% endblock %} 

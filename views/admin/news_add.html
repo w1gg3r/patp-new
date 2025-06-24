@@ -3,7 +3,7 @@
 {% block content %}
 <h3 class="mb-4">Добавить новость</h3>
 
-<form action="/admin/news/add" method="POST">
+<form action="/admin/news/add" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="title" class="form-label">Заголовок</label>
         <input type="text" id="title" name="title" class="form-control" required>

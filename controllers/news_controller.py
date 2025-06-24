@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, g
 from config.database import get_db_connection
 
 # Создаём blueprint для новостей
@@ -29,7 +29,8 @@ def news_list(page=1):
         'news/news_list.html',
         news=news,
         page=page,
-        total_pages=total_pages
+        total_pages=total_pages,
+        latest_news=g.latest_news
     )
 
 # === Детализация новости с защитой от отсутствующего изображения ===
@@ -52,4 +53,4 @@ def news_detail(id):
     if post is None:
         return "Новость не найдена", 404
     
-    return render_template('news/single_news.html', post=post)
+    return render_template('news/single_news.html', post=post, latest_news=g.latest_news)

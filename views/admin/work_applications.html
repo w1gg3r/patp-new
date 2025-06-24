@@ -1,0 +1,158 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Заявки на вакансии — ПАТП №1{% endblock %}
+{% block content %}
+<div class="py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Заявки на вакансии</h2>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Дата</th>
+                            <th>ФИО</th>
+                            <th>Телефон</th>
+                            <th>Вакансия</th>
+                            <th>Статус</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for application in applications %}
+                        <tr>
+                            <td>{{ application['id'] }}</td>
+                            <td>{{ application['created_at'] }}</td>
+                            <td>{{ application['name'] }}</td>
+                            <td>{{ application['telephone'] }}</td>
+                            <td>
+                                {% if application['vacancy_type'] == 'driver_maneuver' %}
+                                    Водитель маневровых работ - слесарь
+                                {% elif application['vacancy_type'] == 'trolleybus_driver' %}
+                                    Водитель троллейбуса
+                                {% elif application['vacancy_type'] == 'tech_assistance_driver' %}
+                                    Водитель техпомощи
+                                {% elif application['vacancy_type'] == 'technical_worker' %}
+                                    Технический работник
+                                {% elif application['vacancy_type'] == 'driver' %}
+                                    Водитель
+                                {% else %}
+                                    {{ application['vacancy_type'] }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                <form action="/admin/work-application/{{ application['id'] }}/update-status" method="POST" class="d-inline">
+                                    <select class="form-select form-select-sm status-select" name="status" onchange="this.form.submit()">
+                                        <option value="Новая" {% if application['status'] == 'Новая' %}selected{% endif %}>Новая</option>
+                                        <option value="В обработке" {% if application['status'] == 'В обработке' %}selected{% endif %}>В обработке</option>
+                                        <option value="Собеседование" {% if application['status'] == 'Собеседование' %}selected{% endif %}>Собеседование</option>
+                                        <option value="Принят" {% if application['status'] == 'Принят' %}selected{% endif %}>Принят</option>
+                                        <option value="Отклонено" {% if application['status'] == 'Отклонено' %}selected{% endif %}>Отклонено</option>
+                                    </select>
+                                </form>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal{{ application['id'] }}">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <form action="/admin/work-application/{{ application['id'] }}/delete" method="POST" class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Вы уверены, что хотите удалить эту заявку?')">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+
+                        <!-- Модальное окно с деталями заявки -->
+                        <div class="modal fade" id="detailModal{{ application['id'] }}" tabindex="-1" aria-labelledby="detailModalLabel{{ application['id'] }}" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="detailModalLabel{{ application['id'] }}">Детали заявки #{{ application['id'] }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p><strong>ФИО:</strong> {{ application['name'] }}</p>
+                                                <p><strong>Телефон:</strong> {{ application['telephone'] }}</p>
+                                                <p><strong>Email:</strong> {{ application['email'] }}</p>
+                                                <p><strong>Возраст:</strong> {{ application['age'] }}</p>
+                                                <p><strong>Опыт работы:</strong> 
+                                                    {% if application['experience'] == 'no_experience' %}
+                                                        Нет опыта
+                                                    {% elif application['experience'] == 'less_than_1' %}
+                                                        Менее 1 года
+                                                    {% elif application['experience'] == '1_to_3' %}
+                                                        От 1 до 3 лет
+                                                    {% elif application['experience'] == '3_to_5' %}
+                                                        От 3 до 5 лет
+                                                    {% elif application['experience'] == 'more_than_5' %}
+                                                        Более 5 лет
+                                                    {% else %}
+                                                        {{ application['experience'] }}
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><strong>Образование:</strong>
+                                                    {% if application['education'] == 'secondary' %}
+                                                        Среднее
+                                                    {% elif application['education'] == 'specialized_secondary' %}
+                                                        Среднее специальное
+                                                    {% elif application['education'] == 'incomplete_higher' %}
+                                                        Неоконченное высшее
+                                                    {% elif application['education'] == 'higher' %}
+                                                        Высшее
+                                                    {% else %}
+                                                        {{ application['education'] }}
+                                                    {% endif %}
+                                                </p>
+                                                <p><strong>Водительское удостоверение:</strong> {{ application['driving_license'] }}</p>
+                                                <p><strong>Дата подачи:</strong> {{ application['created_at'] }}</p>
+                                                {% if application['resume_file'] %}
+                                                <p><strong>Резюме:</strong> <a href="/static/uploads/{{ application['resume_file'] }}" target="_blank" class="btn btn-sm btn-outline-primary">Скачать резюме</a></p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h6>Дополнительная информация:</h6>
+                                                <p>{{ application['message'] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% if not applications %}
+                <div class="text-center py-4">
+                    <p class="text-muted">Заявок на вакансии пока нет</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

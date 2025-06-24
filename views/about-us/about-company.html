@@ -1,0 +1,340 @@
+{% extends "base.html" %}
+{% block title %}О компании — ПАТП №1 Вологда{% endblock %}
+
+{% block content %}
+<div class="service-holder">
+    <h1 class="mb-5">О компании</h1>
+    <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">О компании</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container py-4">
+    <!-- История компании -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">История ПАТП №1</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <p class="mb-3">
+                            АО «ПАТП №1» — крупнейший пассажирский перевозчик Вологодской области с богатой историей и традициями. Предприятие было основано в 1939 году и за более чем 80 лет работы стало надежным партнером для жителей города и области.
+                        </p>
+                        <p class="mb-3">
+                            Начав свою деятельность с небольшого автопарка, сегодня ПАТП №1 обслуживает десятки городских и пригородных маршрутов, ежедневно перевозя тысячи пассажиров.
+                        </p>
+                        <p class="mb-3">
+                            На протяжении всей своей истории предприятие постоянно развивалось, внедряя современные технологии обслуживания пассажиров и повышая качество предоставляемых услуг.
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="{{ url_for('static', filename='images/company.png') }}" alt="История компании" class="img-fluid rounded shadow-sm">
+                    </div>
+                </div>
+                
+                <div class="alert alert-primary mt-4">
+                    <div class="d-flex">
+                        <i class="bi bi-info-circle-fill me-2 fs-4"></i>
+                        <div>
+                            <h4 class="alert-heading">Наша миссия</h4>
+                            <p class="mb-0">Обеспечивать безопасные, комфортные и доступные пассажирские перевозки, способствуя повышению качества жизни жителей Вологодской области.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ключевые показатели -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Ключевые показатели</h2>
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work text-center">
+                        <div class="display-4 fw-bold text-primary mb-2">80+</div>
+                        <p class="mb-0">лет на рынке пассажирских перевозок</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work text-center">
+                        <div class="display-4 fw-bold text-primary mb-2">150+</div>
+                        <p class="mb-0">единиц современного транспорта</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work text-center">
+                        <div class="display-4 fw-bold text-primary mb-2">500+</div>
+                        <p class="mb-0">квалифицированных сотрудников</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work text-center">
+                        <div class="display-4 fw-bold text-primary mb-2">30+</div>
+                        <p class="mb-0">маршрутов по городу и области</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Руководство компании -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Руководство компании</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <img src="{{ url_for('static', filename='images/director.jpg') }}" alt="Генеральный директор" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                                </div>
+                                <h3 class="h5 mb-1 text-center">Тюлькин Захар Олегович</h3>
+                                <p class="text-muted text-center mb-3">Генеральный директор</p>
+                                <p class="small">
+                                    Руководит предприятием с 2015 года. Имеет более 20 лет опыта работы в сфере пассажирских перевозок. Под его руководством компания внедрила современные технологии обслуживания пассажиров и обновила автопарк.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <img src="{{ url_for('static', filename='images/tech-helper.jpg') }}" alt="Технический директор" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                                </div>
+                                <h3 class="h5 mb-1 text-center">Петров Петр Петрович</h3>
+                                <p class="text-muted text-center mb-3">Технический директор</p>
+                                <p class="small">
+                                    Отвечает за техническое состояние автопарка и внедрение новых технологий. Благодаря его работе компания поддерживает высокий уровень безопасности и надежности перевозок.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <img src="{{ url_for('static', filename='images/finance.jpg') }}" alt="Финансовый директор" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                                </div>
+                                <h3 class="h5 mb-1 text-center">Рогалев Владимир Русланович</h3>
+                                <p class="text-muted text-center mb-3">Финансовый директор</p>
+                                <p class="small">
+                                    Управляет финансовыми потоками предприятия и разрабатывает стратегии развития. Благодаря грамотному финансовому планированию компания стабильно развивается и расширяет спектр услуг.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Наши преимущества -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Наши преимущества</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-shield-check fs-1 text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="h5 mb-0">Безопасность</h3>
+                            </div>
+                        </div>
+                        <p class="mb-0">Все наши водители проходят регулярное обучение и медицинский контроль. Транспортные средства своевременно проходят техническое обслуживание и проверку.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-clock fs-1 text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="h5 mb-0">Пунктуальность</h3>
+                            </div>
+                        </div>
+                        <p class="mb-0">Мы ценим время наших пассажиров и стремимся соблюдать расписание движения автобусов. Наша диспетчерская служба работает круглосуточно.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-people fs-1 text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="h5 mb-0">Профессионализм</h3>
+                            </div>
+                        </div>
+                        <p class="mb-0">Наши сотрудники — профессионалы своего дела с многолетним опытом работы. Мы постоянно повышаем квалификацию персонала.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-gear fs-1 text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="h5 mb-0">Современный автопарк</h3>
+                            </div>
+                        </div>
+                        <p class="mb-0">Регулярно обновляем автопарк, внедряя современные и комфортабельные автобусы, оснащенные системами климат-контроля и безопасности.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-currency-exchange fs-1 text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="h5 mb-0">Доступные цены</h3>
+                            </div>
+                        </div>
+                        <p class="mb-0">Предлагаем оптимальное соотношение цены и качества услуг. Действуют различные тарифы и системы скидок для постоянных клиентов.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body-work">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-graph-up fs-1 text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="h5 mb-0">Инновации</h3>
+                            </div>
+                        </div>
+                        <p class="mb-0">Внедряем современные технологии: электронные билеты, онлайн-отслеживание автобусов, мобильные приложения для удобства пассажиров.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сертификаты и награды -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Сертификаты и награды</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <p class="mb-4">
+                            За годы работы АО «ПАТП №1» неоднократно отмечалось наградами и благодарностями за высокое качество обслуживания и вклад в развитие транспортной инфраструктуры региона:
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-award-fill text-primary me-3 fs-5"></i>
+                                <span>Почетная грамота Министерства транспорта РФ (2019 г.)</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-award-fill text-primary me-3 fs-5"></i>
+                                <span>Благодарность Губернатора Вологодской области (2020 г.)</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-award-fill text-primary me-3 fs-5"></i>
+                                <span>Диплом "Лучший перевозчик года" (2021 г.)</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-award-fill text-primary me-3 fs-5"></i>
+                                <span>Сертификат соответствия системы менеджмента качества ISO 9001</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="alert alert-success mb-0 h-100 d-flex flex-column justify-content-center">
+                            <div class="d-flex align-items-start">
+                                <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+                                <div>
+                                    <h4 class="alert-heading">Наша гордость</h4>
+                                    <p class="mb-0">Мы гордимся нашими достижениями и стремимся к постоянному совершенствованию качества предоставляемых услуг. Каждая награда — это признание нашего профессионализма и ответственного подхода к работе.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контактная информация -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Контактная информация</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3 class="h5 mb-3">Адрес и контакты</h3>
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-geo-alt-fill text-primary me-3 fs-5"></i>
+                                <span>160014, г. Вологда, ул. Мудрова, 31</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-telephone-fill text-primary me-3 fs-5"></i>
+                                <span>+7 (8172) 54-61-90</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-envelope-fill text-primary me-3 fs-5"></i>
+                                <span>info@patp1.ru</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-clock-fill text-primary me-3 fs-5"></i>
+                                <span>Пн-Пт: 8:00-17:00, Сб-Вс: выходной</span>
+                            </li>
+                        </ul>
+                        
+                        <h3 class="h5 mb-3">Социальные сети</h3>
+                        <div class="d-flex gap-3 mb-4">
+                            <a href="https://vk.com/patp1vologda" class="btn btn-outline-primary">
+                                <i class="bi bi-vk me-2"></i> ВКонтакте
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <div class="ratio ratio-4x3">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.5019426935942!2d39.88152627694427!3d59.23047287429516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46ae9b4b1e0e7e15%3A0x7d7d0c5a6c0c1d8f!2z0YPQuy4g0JzRg9C00YDQvtCy0LAsIDMxLCDQktC-0LvQvtCz0LTQsCwg0JLQvtC70L7Qs9C-0LTRgdC60LDRjyDQvtCx0LsuLCAxNjAwMTQ!5e0!3m2!1sru!2sru!4v1719199854671!5m2!1sru!2sru" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %} 

@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+{% block title %}Стоимость проезда — ПАТП №1 Вологда{% endblock %}
+
+{% block content %}
+<div class="service-holder">
+    <h1 class="mb-5">Стоимость проезда</h1>
+    <nav class="breadcrumbs mb-4" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/payment">Оплата проезда</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Стоимость проезда</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container py-4">
+    <!-- Основная информация -->
+    <section class="mb-5">
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <p class="mb-4">
+                    Ниже приведены актуальные цены на проезд в автобусах АО «ПАТП №1».
+                </p>
+
+                <!-- Таблица цен -->
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Категория пассажиров</th>
+                                <th>Стоимость проезда</th>
+                                <th>Дополнительно</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Взрослый (разовый проезд)</td>
+                                <td class="text-center fw-bold">37 ₽</td>
+                                <td>Без скидок</td>
+                            </tr>
+                            <tr>
+                                <td>Льготный билет (школьники, студенты)</td>
+                                <td class="text-center fw-bold">35 ₽</td>
+                                <td>По льготному проездному или документу</td>
+                            </tr>
+                            <tr>
+                                <td>Единый билет (муниципальный)</td>
+                                <td class="text-center fw-bold">37 ₽</td>
+                                <td>Можно пересесть на другой маршрут в течение 1 часа</td>
+                            </tr>
+                            <tr>
+                                <td>Безналичная оплата картой</td>
+                                <td class="text-center fw-bold">37 ₽</td>
+                                <td>Принимаются карты МИР, Visa, Mastercard</td>
+                            </tr>
+                            <tr>
+                                <td>Онлайн-билет (QR-код)</td>
+                                <td class="text-center fw-bold">37 ₽</td>
+                                <td>Покупка через сайт или приложение</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Способы оплаты -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Способы оплаты</h2>
+        <div class="row g-4">
+            <!-- Наличные -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/money.png') }}" alt="Наличные" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">Наличные</h3>
+                        <p class="mb-4">Оплата наличными средствами кондуктору или водителю при посадке в автобус.</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">40 ₽</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Банковская карта -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/bank-card.jpg') }}" alt="Банковская карта" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">Банковская карта</h3>
+                        <p class="mb-4">Бесконтактная оплата картой на терминале у кондуктора или водителя.</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">37 ₽</span>
+                            <div>
+                                <i class="bi bi-credit-card me-1"></i>
+                                <i class="bi bi-credit-card-2-front"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- QR-код -->
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-img-top position-relative overflow-hidden" style="height: 200px;">
+                        <img src="{{ url_for('static', filename='images/qr-coder.jpg') }}" alt="QR-код" class="img-fluid w-100 h-100 object-fit-cover">
+                    </div>
+                    <div class="card-body-work">
+                        <h3 class="h5 mb-3">QR-код</h3>
+                        <p class="mb-4">Покупка билета онлайн и оплата через QR-код в приложении.</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">37 ₽</span>
+                            <i class="bi bi-qr-code fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Дополнительная информация -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Дополнительная информация</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-info-circle text-primary me-3 fs-5"></i>
+                                <span>Цены указаны для городских маршрутов.</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-info-circle text-primary me-3 fs-5"></i>
+                                <span>Для инвалидов I и II групп, а также детей-инвалидов проезд бесплатный (при предъявлении соответствующего документа).</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-info-circle text-primary me-3 fs-5"></i>
+                                <span>Скидки распространяются на определенные категории граждан согласно законодательству.</span>
+                            </li>
+                            <li class="list-group-item bg-transparent d-flex">
+                                <i class="bi bi-info-circle text-primary me-3 fs-5"></i>
+                                <span>Стоимость проезда может изменяться. Актуальную информацию уточняйте по телефону.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="alert alert-info mb-0 h-100 d-flex flex-column justify-content-center">
+                            <div class="d-flex align-items-start">
+                                <i class="bi bi-telephone-fill me-2 fs-4"></i>
+                                <div>
+                                    <h4 class="alert-heading">Возникли вопросы?</h4>
+                                    <p class="mb-0">Более подробную информацию вы можете получить по телефону:</p>
+                                    <p class="mb-0 fw-bold">
+                                        <a href="tel:+78172556670" class="text-decoration-none">+7 (8172) 55-66-70</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Проездные билеты -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">Проездные билеты</h2>
+        <div class="card shadow-sm">
+            <div class="card-docs">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Тип проездного</th>
+                                <th>Стоимость</th>
+                                <th>Срок действия</th>
+                                <th>Примечание</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Месячный проездной (взрослый)</td>
+                                <td class="text-center fw-bold">2850 ₽</td>
+                                <td>Календарный месяц</td>
+                                <td>Неограниченное количество поездок</td>
+                            </tr>
+                            <tr>
+                                <td>Месячный проездной (студенческий)</td>
+                                <td class="text-center fw-bold">1800 ₽</td>
+                                <td>Календарный месяц</td>
+                                <td>Неограниченное количество поездок, при предъявлении студенческого билета</td>
+                            </tr>
+                            <tr>
+                                <td>Месячный проездной (школьный)</td>
+                                <td class="text-center fw-bold">1600     ₽</td>
+                                <td>Календарный месяц</td>
+                                <td>Неограниченное количество поездок, при предъявлении справки из школы</td>
+                            </tr>
+                            <tr>
+                                <td>Единый проездной</td>
+                                <td class="text-center fw-bold">2850 ₽</td>
+                                <td>Календарный месяц</td>
+                                <td>Действует на всех маршрутах городского транспорта</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="alert alert-warning mt-3">
+                    <div class="d-flex">
+                        <i class="bi bi-exclamation-triangle-fill me-2 fs-4"></i>
+                        <div>
+                            <h4 class="alert-heading">Важно!</h4>
+                            <p class="mb-0">Проездные билеты можно приобрести в кассах ПАТП №1 по адресу: г. Вологда, ул. Мудрова, д. 31, а также в специализированных киосках города.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %} 
