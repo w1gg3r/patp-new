@@ -60,6 +60,97 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
 
+    <script>
+    // Исправление моргания модальных окон в админ-панели
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Admin modals fix loaded');
+        
+        // Функция для очистки всех backdrop элементов
+        function clearBackdrops() {
+            const backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(backdrop => backdrop.remove());
+        }
+        
+        // Функция для закрытия всех открытых модальных окон
+        function closeAllModals() {
+            const openModals = document.querySelectorAll('.modal.show');
+            openModals.forEach(modal => {
+                const modalInstance = bootstrap.Modal.getInstance(modal);
+                if (modalInstance) modalInstance.hide();
+            });
+        }
+        
+        // Обработчик для кнопок открытия модальных окон
+        document.addEventListener('click', function(e) {
+            const modalTrigger = e.target.closest('[data-bs-toggle="modal"]');
+            
+            if (modalTrigger) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Закрываем все открытые модальные окна
+                closeAllModals();
+                
+                // Очищаем все backdrop элементы
+                clearBackdrops();
+                
+                // Получаем целевое модальное окно
+                const targetModalId = modalTrigger.getAttribute('data-bs-target');
+                const targetModal = document.querySelector(targetModalId);
+                
+                if (targetModal) {
+                    // Создаем новый экземпляр модального окна
+                    const modalInstance = new bootstrap.Modal(targetModal, {
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+                    
+                    // Показываем модальное окно
+                    modalInstance.show();
+                    
+                    // Устанавливаем правильный z-index
+                    setTimeout(() => {
+                        targetModal.style.zIndex = '1055';
+                        const backdrop = document.querySelector('.modal-backdrop');
+                        if (backdrop) {
+                            backdrop.style.zIndex = '1050';
+                        }
+                    }, 10);
+                }
+            }
+        });
+        
+        // Обработчик для кнопок закрытия модальных окон
+        document.addEventListener('click', function(e) {
+            const closeButton = e.target.closest('[data-bs-dismiss="modal"]');
+            
+            if (closeButton) {
+                const modal = closeButton.closest('.modal');
+                if (modal) {
+                    const modalInstance = bootstrap.Modal.getInstance(modal);
+                    if (modalInstance) modalInstance.hide();
+                    
+                    // Очищаем backdrop после закрытия
+                    setTimeout(() => {
+                        clearBackdrops();
+                        document.body.classList.remove('modal-open');
+                        document.body.style.overflow = '';
+                        document.body.style.paddingRight = '';
+                    }, 150);
+                }
+            }
+        });
+        
+        // Обработчик события закрытия модального окна
+        document.addEventListener('hidden.bs.modal', function(e) {
+            clearBackdrops();
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+        });
+    });
+    </script>
+
     <style>
     body {
         display: flex;
@@ -68,6 +159,41 @@
     }
     main {
         flex-grow: 1;
+    }
+    
+    /* Исправление проблем с модальными окнами */
+    .modal {
+        z-index: 1055 !important;
+    }
+    
+    .modal-backdrop {
+        z-index: 1050 !important;
+        opacity: 0.5 !important;
+    }
+    
+    /* Предотвращение мерцания */
+    .modal.fade .modal-dialog {
+        transition: transform 0.15s ease-out;
+        transform: translate(0, -50px);
+    }
+    
+    .modal.show .modal-dialog {
+        transform: translate(0, 0);
+    }
+    
+    /* Улучшение производительности */
+    .modal,
+    .modal-dialog,
+    .modal-content {
+        will-change: auto;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+    
+    /* Исправление проблем с прокруткой */
+    body.modal-open {
+        overflow: hidden !important;
+        padding-right: 0 !important;
     }
 </style>
 </body>
